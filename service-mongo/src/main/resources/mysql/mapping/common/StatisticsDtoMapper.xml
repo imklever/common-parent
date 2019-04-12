@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.isoftstone.common.mongobackup.mapper.StatisticsDtoMapper" >
+  <resultMap id="BaseResultMap" type="com.isoftstone.common.jd.StatisticsDto" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="unit_id" property="unitId" jdbcType="VARCHAR" />
+    <result column="date_time" property="dateTime" jdbcType="VARCHAR" />
+    <result column="date_time_millis" property="dateTimeMillis" jdbcType="DECIMAL" />
+    <result column="onetonighteen_count" property="onetonighteenCount" jdbcType="DECIMAL" />
+    <result column="twenty_otonine_count" property="twentyOtonineCount" jdbcType="DECIMAL" />
+    <result column="thirty_otonine_count" property="thirtyOtonineCount" jdbcType="DECIMAL" />
+    <result column="forty_otonine_count" property="fortyOtonineCount" jdbcType="DECIMAL" />
+    <result column="fifty_otonine_count" property="fiftyOtonineCount" jdbcType="DECIMAL" />
+    <result column="male_count" property="maleCount" jdbcType="DECIMAL" />
+    <result column="female_count" property="femaleCount" jdbcType="DECIMAL" />
+    <result column="current_total_count" property="currentTotalCount" jdbcType="DECIMAL" />
+    <result column="current_total_in_count" property="currentTotalInCount" jdbcType="DECIMAL" />
+    <result column="count_rate_over_yesterday" property="countRateOverYesterday" jdbcType="DECIMAL" />
+    <result column="count_rate_over_lastweek" property="countRateOverLastweek" jdbcType="DECIMAL" />
+    <result column="avg_residence_time" property="avgResidenceTime" jdbcType="DECIMAL" />
+    <result column="avg_rate_over_yesterday" property="avgRateOverYesterday" jdbcType="DECIMAL" />
+    <result column="avg_rate_over_lastweek" property="avgRateOverLastweek" jdbcType="DECIMAL" />
+    <result column="otoone_residence_count" property="otooneResidenceCount" jdbcType="DECIMAL" />
+    <result column="onetothree_residence_count" property="onetothreeResidenceCount" jdbcType="DECIMAL" />
+    <result column="threetofive_residence_count" property="threetofiveResidenceCount" jdbcType="DECIMAL" />
+    <result column="fivetoten_residence_count" property="fivetotenResidenceCount" jdbcType="DECIMAL" />
+    <result column="tentothirty_residence_count" property="tentothirtyResidenceCount" jdbcType="DECIMAL" />
+    <result column="overthirty_residence_count" property="overthirtyResidenceCount" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, unit_id, date_time, date_time_millis, onetonighteen_count, twenty_otonine_count, 
+    thirty_otonine_count, forty_otonine_count, fifty_otonine_count, male_count, female_count, 
+    current_total_count, current_total_in_count, count_rate_over_yesterday, 
+    count_rate_over_lastweek, avg_residence_time, avg_rate_over_yesterday, avg_rate_over_lastweek, 
+    otoone_residence_count, onetothree_residence_count, threetofive_residence_count, 
+    fivetoten_residence_count, tentothirty_residence_count, overthirty_residence_count
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from jd_statistics
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByDateTime" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from jd_statistics
+    where date_time  <![CDATA[ <= ]]> #{dateTime,jdbcType=VARCHAR} 
+	    and DATE_FORMAT(date_time,'%Y-%m-%d')= #{date,jdbcType=VARCHAR} 
+	    and unit_id=#{unitId,jdbcType=VARCHAR} 
+    order by date_time desc limit 1 ;
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from jd_statistics
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByDateTime">
+    delete from jd_statistics
+    where unit_id = #{unitId,jdbcType=VARCHAR} and date_time = #{dateTime,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.isoftstone.common.jd.StatisticsDto" >
+    insert into jd_statistics (id, unit_id, date_time, 
+      date_time_millis, onetonighteen_count, twenty_otonine_count, 
+      thirty_otonine_count, forty_otonine_count, 
+      fifty_otonine_count, male_count, female_count, 
+       current_total_count, current_total_in_count, 
+      count_rate_over_yesterday, count_rate_over_lastweek, 
+      avg_residence_time, avg_rate_over_yesterday, 
+      avg_rate_over_lastweek, otoone_residence_count, 
+      onetothree_residence_count, threetofive_residence_count, 
+      fivetoten_residence_count, tentothirty_residence_count, 
+      overthirty_residence_count)
+    values (#{id,jdbcType=VARCHAR}, #{unitId,jdbcType=VARCHAR}, #{dateTime,jdbcType=VARCHAR}, 
+      #{dateTimeMillis,jdbcType=DECIMAL}, #{onetonighteenCount,jdbcType=DECIMAL}, #{twentyOtonineCount,jdbcType=DECIMAL}, 
+      #{thirtyOtonineCount,jdbcType=DECIMAL}, #{fortyOtonineCount,jdbcType=DECIMAL}, 
+      #{fiftyOtonineCount,jdbcType=DECIMAL}, #{maleCount,jdbcType=DECIMAL}, #{femaleCount,jdbcType=DECIMAL}, 
+      #{currentTotalCount,jdbcType=DECIMAL}, #{currentTotalInCount,jdbcType=DECIMAL}, 
+      #{countRateOverYesterday,jdbcType=DECIMAL}, #{countRateOverLastweek,jdbcType=DECIMAL}, 
+      #{avgResidenceTime,jdbcType=DECIMAL}, #{avgRateOverYesterday,jdbcType=DECIMAL}, 
+      #{avgRateOverLastweek,jdbcType=DECIMAL}, #{otooneResidenceCount,jdbcType=DECIMAL}, 
+      #{onetothreeResidenceCount,jdbcType=DECIMAL}, #{threetofiveResidenceCount,jdbcType=DECIMAL}, 
+      #{fivetotenResidenceCount,jdbcType=DECIMAL}, #{tentothirtyResidenceCount,jdbcType=DECIMAL}, 
+      #{overthirtyResidenceCount,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.isoftstone.common.jd.StatisticsDto" >
+    insert into jd_statistics
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="unitId != null" >
+        unit_id,
+      </if>
+      <if test="dateTime != null" >
+        date_time,
+      </if>
+      <if test="dateTimeMillis != null" >
+        date_time_millis,
+      </if>
+      <if test="onetonighteenCount != null" >
+        onetonighteen_count,
+      </if>
+      <if test="twentyOtonineCount != null" >
+        twenty_otonine_count,
+      </if>
+      <if test="thirtyOtonineCount != null" >
+        thirty_otonine_count,
+      </if>
+      <if test="fortyOtonineCount != null" >
+        forty_otonine_count,
+      </if>
+      <if test="fiftyOtonineCount != null" >
+        fifty_otonine_count,
+      </if>
+      <if test="maleCount != null" >
+        male_count,
+      </if>
+      <if test="femaleCount != null" >
+        female_count,
+      </if>
+      <if test="currentTotalCount != null" >
+        current_total_count,
+      </if>
+      <if test="currentTotalInCount != null" >
+        current_total_in_count,
+      </if>
+      <if test="countRateOverYesterday != null" >
+        count_rate_over_yesterday,
+      </if>
+      <if test="countRateOverLastweek != null" >
+        count_rate_over_lastweek,
+      </if>
+      <if test="avgResidenceTime != null" >
+        avg_residence_time,
+      </if>
+      <if test="avgRateOverYesterday != null" >
+        avg_rate_over_yesterday,
+      </if>
+      <if test="avgRateOverLastweek != null" >
+        avg_rate_over_lastweek,
+      </if>
+      <if test="otooneResidenceCount != null" >
+        otoone_residence_count,
+      </if>
+      <if test="onetothreeResidenceCount != null" >
+        onetothree_residence_count,
+      </if>
+      <if test="threetofiveResidenceCount != null" >
+        threetofive_residence_count,
+      </if>
+      <if test="fivetotenResidenceCount != null" >
+        fivetoten_residence_count,
+      </if>
+      <if test="tentothirtyResidenceCount != null" >
+        tentothirty_residence_count,
+      </if>
+      <if test="overthirtyResidenceCount != null" >
+        overthirty_residence_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="unitId != null" >
+        #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="dateTime != null" >
+        #{dateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="dateTimeMillis != null" >
+        #{dateTimeMillis,jdbcType=DECIMAL},
+      </if>
+      <if test="onetonighteenCount != null" >
+        #{onetonighteenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="twentyOtonineCount != null" >
+        #{twentyOtonineCount,jdbcType=DECIMAL},
+      </if>
+      <if test="thirtyOtonineCount != null" >
+        #{thirtyOtonineCount,jdbcType=DECIMAL},
+      </if>
+      <if test="fortyOtonineCount != null" >
+        #{fortyOtonineCount,jdbcType=DECIMAL},
+      </if>
+      <if test="fiftyOtonineCount != null" >
+        #{fiftyOtonineCount,jdbcType=DECIMAL},
+      </if>
+      <if test="maleCount != null" >
+        #{maleCount,jdbcType=DECIMAL},
+      </if>
+      <if test="femaleCount != null" >
+        #{femaleCount,jdbcType=DECIMAL},
+      </if>
+      
+      <if test="currentTotalCount != null" >
+        #{currentTotalCount,jdbcType=DECIMAL},
+      </if>
+      <if test="currentTotalInCount != null" >
+        #{currentTotalInCount,jdbcType=DECIMAL},
+      </if>
+      <if test="countRateOverYesterday != null" >
+        #{countRateOverYesterday,jdbcType=DECIMAL},
+      </if>
+      <if test="countRateOverLastweek != null" >
+        #{countRateOverLastweek,jdbcType=DECIMAL},
+      </if>
+      <if test="avgResidenceTime != null" >
+        #{avgResidenceTime,jdbcType=DECIMAL},
+      </if>
+      <if test="avgRateOverYesterday != null" >
+        #{avgRateOverYesterday,jdbcType=DECIMAL},
+      </if>
+      <if test="avgRateOverLastweek != null" >
+        #{avgRateOverLastweek,jdbcType=DECIMAL},
+      </if>
+      <if test="otooneResidenceCount != null" >
+        #{otooneResidenceCount,jdbcType=DECIMAL},
+      </if>
+      <if test="onetothreeResidenceCount != null" >
+        #{onetothreeResidenceCount,jdbcType=DECIMAL},
+      </if>
+      <if test="threetofiveResidenceCount != null" >
+        #{threetofiveResidenceCount,jdbcType=DECIMAL},
+      </if>
+      <if test="fivetotenResidenceCount != null" >
+        #{fivetotenResidenceCount,jdbcType=DECIMAL},
+      </if>
+      <if test="tentothirtyResidenceCount != null" >
+        #{tentothirtyResidenceCount,jdbcType=DECIMAL},
+      </if>
+      <if test="overthirtyResidenceCount != null" >
+        #{overthirtyResidenceCount,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.isoftstone.common.jd.StatisticsDto" >
+    update jd_statistics
+    <set >
+      <if test="unitId != null" >
+        unit_id = #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="dateTime != null" >
+        date_time = #{dateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="dateTimeMillis != null" >
+        date_time_millis = #{dateTimeMillis,jdbcType=DECIMAL},
+      </if>
+      <if test="onetonighteenCount != null" >
+        onetonighteen_count = #{onetonighteenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="twentyOtonineCount != null" >
+        twenty_otonine_count = #{twentyOtonineCount,jdbcType=DECIMAL},
+      </if>
+      <if test="thirtyOtonineCount != null" >
+        thirty_otonine_count = #{thirtyOtonineCount,jdbcType=DECIMAL},
+      </if>
+      <if test="fortyOtonineCount != null" >
+        forty_otonine_count = #{fortyOtonineCount,jdbcType=DECIMAL},
+      </if>
+      <if test="fiftyOtonineCount != null" >
+        fifty_otonine_count = #{fiftyOtonineCount,jdbcType=DECIMAL},
+      </if>
+      <if test="maleCount != null" >
+        male_count = #{maleCount,jdbcType=DECIMAL},
+      </if>
+      <if test="femaleCount != null" >
+        female_count = #{femaleCount,jdbcType=DECIMAL},
+      </if>
+      <if test="currentTotalCount != null" >
+        current_total_count = #{currentTotalCount,jdbcType=DECIMAL},
+      </if>
+      <if test="currentTotalInCount != null" >
+        current_total_in_count = #{currentTotalInCount,jdbcType=DECIMAL},
+      </if>
+      <if test="countRateOverYesterday != null" >
+        count_rate_over_yesterday = #{countRateOverYesterday,jdbcType=DECIMAL},
+      </if>
+      <if test="countRateOverLastweek != null" >
+        count_rate_over_lastweek = #{countRateOverLastweek,jdbcType=DECIMAL},
+      </if>
+      <if test="avgResidenceTime != null" >
+        avg_residence_time = #{avgResidenceTime,jdbcType=DECIMAL},
+      </if>
+      <if test="avgRateOverYesterday != null" >
+        avg_rate_over_yesterday = #{avgRateOverYesterday,jdbcType=DECIMAL},
+      </if>
+      <if test="avgRateOverLastweek != null" >
+        avg_rate_over_lastweek = #{avgRateOverLastweek,jdbcType=DECIMAL},
+      </if>
+      <if test="otooneResidenceCount != null" >
+        otoone_residence_count = #{otooneResidenceCount,jdbcType=DECIMAL},
+      </if>
+      <if test="onetothreeResidenceCount != null" >
+        onetothree_residence_count = #{onetothreeResidenceCount,jdbcType=DECIMAL},
+      </if>
+      <if test="threetofiveResidenceCount != null" >
+        threetofive_residence_count = #{threetofiveResidenceCount,jdbcType=DECIMAL},
+      </if>
+      <if test="fivetotenResidenceCount != null" >
+        fivetoten_residence_count = #{fivetotenResidenceCount,jdbcType=DECIMAL},
+      </if>
+      <if test="tentothirtyResidenceCount != null" >
+        tentothirty_residence_count = #{tentothirtyResidenceCount,jdbcType=DECIMAL},
+      </if>
+      <if test="overthirtyResidenceCount != null" >
+        overthirty_residence_count = #{overthirtyResidenceCount,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.isoftstone.common.jd.StatisticsDto" >
+    update jd_statistics
+    set unit_id = #{unitId,jdbcType=VARCHAR},
+      date_time = #{dateTime,jdbcType=VARCHAR},
+      date_time_millis = #{dateTimeMillis,jdbcType=DECIMAL},
+      onetonighteen_count = #{onetonighteenCount,jdbcType=DECIMAL},
+      twenty_otonine_count = #{twentyOtonineCount,jdbcType=DECIMAL},
+      thirty_otonine_count = #{thirtyOtonineCount,jdbcType=DECIMAL},
+      forty_otonine_count = #{fortyOtonineCount,jdbcType=DECIMAL},
+      fifty_otonine_count = #{fiftyOtonineCount,jdbcType=DECIMAL},
+      male_count = #{maleCount,jdbcType=DECIMAL},
+      female_count = #{femaleCount,jdbcType=DECIMAL},
+      current_total_count = #{currentTotalCount,jdbcType=DECIMAL},
+      current_total_in_count = #{currentTotalInCount,jdbcType=DECIMAL},
+      count_rate_over_yesterday = #{countRateOverYesterday,jdbcType=DECIMAL},
+      count_rate_over_lastweek = #{countRateOverLastweek,jdbcType=DECIMAL},
+      avg_residence_time = #{avgResidenceTime,jdbcType=DECIMAL},
+      avg_rate_over_yesterday = #{avgRateOverYesterday,jdbcType=DECIMAL},
+      avg_rate_over_lastweek = #{avgRateOverLastweek,jdbcType=DECIMAL},
+      otoone_residence_count = #{otooneResidenceCount,jdbcType=DECIMAL},
+      onetothree_residence_count = #{onetothreeResidenceCount,jdbcType=DECIMAL},
+      threetofive_residence_count = #{threetofiveResidenceCount,jdbcType=DECIMAL},
+      fivetoten_residence_count = #{fivetotenResidenceCount,jdbcType=DECIMAL},
+      tentothirty_residence_count = #{tentothirtyResidenceCount,jdbcType=DECIMAL},
+      overthirty_residence_count = #{overthirtyResidenceCount,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+   <insert id="insertBatch">
+    insert into jd_statistics (id, unit_id, date_time, 
+      date_time_millis, onetonighteen_count, twenty_otonine_count, 
+      thirty_otonine_count, forty_otonine_count, 
+      fifty_otonine_count, male_count, female_count, 
+       current_total_count, current_total_in_count, 
+      count_rate_over_yesterday, count_rate_over_lastweek, 
+      avg_residence_time, avg_rate_over_yesterday, 
+      avg_rate_over_lastweek, otoone_residence_count, 
+      onetothree_residence_count, threetofive_residence_count, 
+      fivetoten_residence_count, tentothirty_residence_count, 
+      overthirty_residence_count)
+    values 
+     <foreach collection ="list" item="dto" separator =",">
+        (#{dto.id,jdbcType=VARCHAR}, #{dto.unitId,jdbcType=VARCHAR}, #{dto.dateTime,jdbcType=VARCHAR}, 
+	      #{dto.dateTimeMillis,jdbcType=DECIMAL}, #{dto.onetonighteenCount,jdbcType=DECIMAL}, #{dto.twentyOtonineCount,jdbcType=DECIMAL}, 
+	      #{dto.thirtyOtonineCount,jdbcType=DECIMAL}, #{dto.fortyOtonineCount,jdbcType=DECIMAL}, 
+	      #{dto.fiftyOtonineCount,jdbcType=DECIMAL}, #{dto.maleCount,jdbcType=DECIMAL}, #{dto.femaleCount,jdbcType=DECIMAL}, 
+	       #{dto.currentTotalCount,jdbcType=DECIMAL}, #{dto.currentTotalInCount,jdbcType=DECIMAL}, 
+	      #{dto.countRateOverYesterday,jdbcType=DECIMAL}, #{dto.countRateOverLastweek,jdbcType=DECIMAL}, 
+	      #{dto.avgResidenceTime,jdbcType=DECIMAL}, #{dto.avgRateOverYesterday,jdbcType=DECIMAL}, 
+	      #{dto.avgRateOverLastweek,jdbcType=DECIMAL}, #{dto.otooneResidenceCount,jdbcType=DECIMAL}, 
+	      #{dto.onetothreeResidenceCount,jdbcType=DECIMAL}, #{dto.threetofiveResidenceCount,jdbcType=DECIMAL}, 
+	      #{dto.fivetotenResidenceCount,jdbcType=DECIMAL}, #{dto.tentothirtyResidenceCount,jdbcType=DECIMAL}, 
+	      #{dto.overthirtyResidenceCount,jdbcType=DECIMAL}) 
+     </foreach>
+  </insert>
+</mapper>

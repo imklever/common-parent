@@ -1,0 +1,21 @@
+create table sys_menu(
+id varchar2(64),
+create_date date,
+describe varchar2(255),
+display number(1),
+lab varchar2(255),
+location varchar2(255),
+name varchar2(255),
+pid varchar2(255),
+sort number(10),
+status number(1),
+type varchar2(255),
+url varchar2(255),
+target varchar2(255),
+flag number,
+marker varchar2(255),
+position varchar2(255),
+create_user varchar2(40),
+create_date varchar2(40),
+data_status varchar2(40)
+)

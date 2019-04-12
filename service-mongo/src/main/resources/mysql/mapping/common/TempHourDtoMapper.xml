@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.isoftstone.common.mongobackup.mapper.TempHourDtoMapper" >
+  <resultMap id="BaseResultMap" type="com.isoftstone.common.mongobackup.domain.mysql.TempHourDto" >
+    <result column="appeared_date" property="appearedDate" jdbcType="VARCHAR" />
+    <result column="appeared_hour" property="appearedHour" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="face_count" property="faceCount" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    appeared_date ,appeared_hour, gender,face_count
+  </sql>
+  <select id="selectAll" resultMap="BaseResultMap" >
+     SELECT jc.appeared_date ,jc.appeared_hour, dict.name AS gender,COUNT(jc.face_id) AS face_count  
+     FROM (SELECT DISTINCT unit_id,face_id,appeared_date,appeared_hour FROM jd_log_collection) jc 
+     LEFT JOIN ( SELECT DISTINCT face_id,gender,device,unit_id FROM jd_face_id_collection ) fc ON jc.face_id=fc.face_id
+     LEFT JOIN 
+     (SELECT NAME,dict_value FROM sys_dict WHERE  dict_type='gender' AND dict_value!='') AS dict
+      ON fc.gender = dict.dict_value  
+	         WHERE dict.name IS NOT NULL AND jc.unit_id=#{unitId,jdbcType=VARCHAR}
+	         AND fc.unit_id=#{unitId,jdbcType=VARCHAR}
+	    GROUP BY jc.appeared_date,jc.appeared_hour,dict.name 
+  </select>
+</mapper>

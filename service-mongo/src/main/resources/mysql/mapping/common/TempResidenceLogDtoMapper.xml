@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.isoftstone.common.mongobackup.mapper.TempResidenceLogDtoMapper" >
+  <resultMap id="BaseResultMap" type="com.isoftstone.common.mongobackup.domain.mysql.TempResidenceLogDto" >
+    <result column="face_id" property="faceId" jdbcType="VARCHAR" />
+    <result column="residence_time" property="residenceTime" jdbcType="DECIMAL" />
+  </resultMap>
+  <insert id="insert" parameterType="com.isoftstone.common.mongobackup.domain.mysql.TempResidenceLogDto" >
+    insert into jd_temp_residence_log (face_id, residence_time)
+    values (#{faceId,jdbcType=VARCHAR}, #{residenceTime,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.isoftstone.common.mongobackup.domain.mysql.TempResidenceLogDto" >
+    insert into jd_temp_residence_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="faceId != null" >
+        face_id,
+      </if>
+      <if test="residenceTime != null" >
+        residence_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="faceId != null" >
+        #{faceId,jdbcType=VARCHAR},
+      </if>
+      <if test="residenceTime != null" >
+        #{residenceTime,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <insert id="insertBatch" parameterType="com.isoftstone.common.mongobackup.domain.mysql.TempResidenceLogDto" >
+    insert into jd_temp_residence_log (face_id, residence_time)
+    values
+     <foreach collection ="list" item="dto" separator =",">
+       (#{dto.faceId,jdbcType=VARCHAR}, #{dto.residenceTime,jdbcType=DECIMAL})
+    </foreach > 
+  </insert>
+  <delete id="deleteAll">
+  	delete from jd_temp_residence_log
+  </delete>
+  <select id="selectByTempAppeared" resultMap="BaseResultMap">
+  	SELECT in_temp.face_id,
+       CASE WHEN  IFNULL(in_temp.in_appeared_time,0)=0 THEN -1
+       WHEN  IFNULL(out_temp.out_appeared_time,0) <![CDATA[ < ]]> IFNULL(in_temp.in_appeared_time,0)
+       		 THEN -1
+       ELSE ROUND((out_temp.out_appeared_time-in_temp.in_appeared_time)/60000) END AS residence_time
+	FROM 
+	(SELECT face_id,max_appeared_time AS in_appeared_time FROM jd_temp_appeared_log WHERE device_type=0 ) in_temp
+	 LEFT JOIN (SELECT face_id,max_appeared_time AS out_appeared_time FROM jd_temp_appeared_log WHERE device_type=1) out_temp
+	 ON in_temp.face_id =out_temp.face_id 
+  </select>
+  
+  
+</mapper>

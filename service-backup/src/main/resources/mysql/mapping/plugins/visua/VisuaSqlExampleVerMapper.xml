@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.isoftstone.common.backup.mapper.plugins.visua.VisuaSqlExampleVerMapper" >
+  <resultMap id="BaseResultMap" type="com.isoftstone.common.plugins.visua.VisuaSqlExampleVer" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="business_code" property="businessCode" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="sql_status" property="sqlStatus" jdbcType="INTEGER" />
+    <result column="business_type" property="businessType" jdbcType="INTEGER" />
+    <result column="sql_type" property="sqlType" jdbcType="INTEGER" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="output_data" property="outputData" jdbcType="LONGVARCHAR" />
+    <result column="input_data" property="inputData" jdbcType="LONGVARCHAR" />
+    <result column="support_to_do" property="supportToDo" jdbcType="LONGVARCHAR" />
+    <result column="udf_to_do" property="udfToDo" jdbcType="LONGVARCHAR" />
+    <result column="sql_templates" property="sqlTemplates" jdbcType="LONGVARCHAR" />
+    <result column="timet" property="timet" jdbcType="TIMESTAMP" />
+    <result column="version_num" property="versionNum" jdbcType="INTEGER" />
+    <result column="backup_type" property="backupType" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, business_code, create_user, sql_status, business_type, sql_type, create_date, 
+    update_date, output_data, input_data, sql_templates,support_to_do,udf_to_do,timet,version_num,backup_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from visua_sql_example_ver
+    where id = #{id,jdbcType=VARCHAR}
+    order by version_num  DESC LIMIT 1
+  </select>  
+  <insert id="insert" parameterType="com.isoftstone.common.plugins.visua.VisuaSqlExampleVer" >
+    insert into visua_sql_example_ver (id, title, business_code, 
+      create_user, sql_status, business_type, 
+      sql_type, create_date, update_date, 
+      output_data, input_data, sql_templates,support_to_do,udf_to_do,timet,version_num,backup_type
+      )
+    values (#{id,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{businessCode,jdbcType=VARCHAR}, 
+      #{createUser,jdbcType=VARCHAR}, #{sqlStatus,jdbcType=INTEGER}, #{businessType,jdbcType=INTEGER}, 
+      #{sqlType,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{outputData,jdbcType=LONGVARCHAR}, #{inputData,jdbcType=LONGVARCHAR}, #{sqlTemplates,jdbcType=LONGVARCHAR},
+      #{supportToDo,jdbcType=LONGVARCHAR},#{udfToDo,jdbcType=LONGVARCHAR},#{timet,jdbcType=TIMESTAMP},
+      #{versionNum,jdbcType=INTEGER},#{backupType,jdbcType=INTEGER}
+      )
+  </insert>
+</mapper>

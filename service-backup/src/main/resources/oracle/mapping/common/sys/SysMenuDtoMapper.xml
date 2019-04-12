@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.com.isoftstone.common.backup.mapper.common.SysMenuDtoMapper" >
+  <resultMap id="BaseResultMap" type="main.java.com.isoftstone.common.common.SysMenuDto" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="REMARKS" property="remarks" jdbcType="VARCHAR" />
+    <result column="DISPLAY" property="display" jdbcType="DECIMAL" />
+    <result column="LAB" property="lab" jdbcType="VARCHAR" />
+    <result column="LOCATION" property="location" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="PID" property="pid" jdbcType="VARCHAR" />
+    <result column="SORT" property="sort" jdbcType="DECIMAL" />
+    <result column="STATUS" property="status" jdbcType="DECIMAL" />
+    <result column="TYPE" property="type" jdbcType="VARCHAR" />
+    <result column="URL" property="url" jdbcType="VARCHAR" />
+    <result column="TARGET" property="target" jdbcType="VARCHAR" />
+    <result column="FLAG" property="flag" jdbcType="DECIMAL" />
+    <result column="MARKER" property="marker" jdbcType="VARCHAR" />
+    <result column="POSITION" property="position" jdbcType="VARCHAR" />
+    <result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="DATA_STATUS" property="dataStatus" jdbcType="VARCHAR" />
+    <result column="SYS_TYPE" property="sysType" jdbcType="DECIMAL" />
+    <result column="MODEL_JSON" property="modelJson" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, REMARKS, DISPLAY, LAB, LOCATION, NAME, PID, SORT, STATUS, TYPE, URL, TARGET, 
+    FLAG, MARKER, POSITION, CREATE_USER, CREATE_DATE, DATA_STATUS, SYS_TYPE, MODEL_JSON
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_MENU
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SYS_MENU
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="main.java.com.isoftstone.common.common.SysMenuDto" >
+    insert into SYS_MENU (ID, REMARKS, DISPLAY, 
+      LAB, LOCATION, NAME, 
+      PID, SORT, STATUS, 
+      TYPE, URL, TARGET, 
+      FLAG, MARKER, POSITION, 
+      CREATE_USER, CREATE_DATE, DATA_STATUS, 
+      SYS_TYPE, MODEL_JSON)
+    values (#{id,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, #{display,jdbcType=DECIMAL}, 
+      #{lab,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{pid,jdbcType=VARCHAR}, #{sort,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL}, 
+      #{type,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{target,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=DECIMAL}, #{marker,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+      #{createUser,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{dataStatus,jdbcType=VARCHAR}, 
+      #{sysType,jdbcType=DECIMAL}, #{modelJson,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="main.java.com.isoftstone.common.common.SysMenuDto" >
+    insert into SYS_MENU
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="remarks != null" >
+        REMARKS,
+      </if>
+      <if test="display != null" >
+        DISPLAY,
+      </if>
+      <if test="lab != null" >
+        LAB,
+      </if>
+      <if test="location != null" >
+        LOCATION,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="pid != null" >
+        PID,
+      </if>
+      <if test="sort != null" >
+        SORT,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="url != null" >
+        URL,
+      </if>
+      <if test="target != null" >
+        TARGET,
+      </if>
+      <if test="flag != null" >
+        FLAG,
+      </if>
+      <if test="marker != null" >
+        MARKER,
+      </if>
+      <if test="position != null" >
+        POSITION,
+      </if>
+      <if test="createUser != null" >
+        CREATE_USER,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="dataStatus != null" >
+        DATA_STATUS,
+      </if>
+      <if test="sysType != null" >
+        SYS_TYPE,
+      </if>
+      <if test="modelJson != null" >
+        MODEL_JSON,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="display != null" >
+        #{display,jdbcType=DECIMAL},
+      </if>
+      <if test="lab != null" >
+        #{lab,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="target != null" >
+        #{target,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=DECIMAL},
+      </if>
+      <if test="marker != null" >
+        #{marker,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataStatus != null" >
+        #{dataStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="sysType != null" >
+        #{sysType,jdbcType=DECIMAL},
+      </if>
+      <if test="modelJson != null" >
+        #{modelJson,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.isoftstone.common.common.SysMenuDto" >
+    update SYS_MENU
+    <set >
+      <if test="remarks != null" >
+        REMARKS = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="display != null" >
+        DISPLAY = #{display,jdbcType=DECIMAL},
+      </if>
+      <if test="lab != null" >
+        LAB = #{lab,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        LOCATION = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        PID = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        SORT = #{sort,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        URL = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="target != null" >
+        TARGET = #{target,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        FLAG = #{flag,jdbcType=DECIMAL},
+      </if>
+      <if test="marker != null" >
+        MARKER = #{marker,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        POSITION = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataStatus != null" >
+        DATA_STATUS = #{dataStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="sysType != null" >
+        SYS_TYPE = #{sysType,jdbcType=DECIMAL},
+      </if>
+      <if test="modelJson != null" >
+        MODEL_JSON = #{modelJson,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="main.java.com.isoftstone.common.common.SysMenuDto" >
+    update SYS_MENU
+    set REMARKS = #{remarks,jdbcType=VARCHAR},
+      DISPLAY = #{display,jdbcType=DECIMAL},
+      LAB = #{lab,jdbcType=VARCHAR},
+      LOCATION = #{location,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      PID = #{pid,jdbcType=VARCHAR},
+      SORT = #{sort,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=DECIMAL},
+      TYPE = #{type,jdbcType=VARCHAR},
+      URL = #{url,jdbcType=VARCHAR},
+      TARGET = #{target,jdbcType=VARCHAR},
+      FLAG = #{flag,jdbcType=DECIMAL},
+      MARKER = #{marker,jdbcType=VARCHAR},
+      POSITION = #{position,jdbcType=VARCHAR},
+      CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      DATA_STATUS = #{dataStatus,jdbcType=VARCHAR},
+      SYS_TYPE = #{sysType,jdbcType=DECIMAL},
+      MODEL_JSON = #{modelJson,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

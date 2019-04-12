@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.com.isoftstone.common.backup.mapper.common.SysRoleDtoMapper" >
+  <resultMap id="BaseResultMap" type="main.java.com.isoftstone.common.common.SysRoleDto" >
+    <result column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="ENABLED" property="enabled" jdbcType="DECIMAL" />
+    <result column="P_ID" property="pId" jdbcType="VARCHAR" />
+    <result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="VARCHAR" />
+    <result column="DATA_STATUS" property="dataStatus" jdbcType="VARCHAR" />
+    <result column="SYS_TYPE" property="sysType" jdbcType="DECIMAL" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="main.java.com.isoftstone.common.common.SysRoleDto" extends="BaseResultMap" >
+    <result column="MENU_LIST" property="menuList" jdbcType="CLOB" />
+  </resultMap>
+  <sql id="Blob_Column_List" >
+    MENU_LIST
+  </sql>
+  <insert id="insert" parameterType="main.java.com.isoftstone.common.common.SysRoleDto" >
+    insert into SYS_ROLE (ID, NAME, ENABLED, 
+      P_ID, CREATE_USER, CREATE_DATE, 
+      DATA_STATUS, SYS_TYPE, MENU_LIST
+      )
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{enabled,jdbcType=DECIMAL}, 
+      #{pId,jdbcType=VARCHAR}, #{createUser,jdbcType=VARCHAR}, #{createDate,jdbcType=VARCHAR}, 
+      #{dataStatus,jdbcType=VARCHAR}, #{sysType,jdbcType=DECIMAL}, #{menuList,jdbcType=CLOB}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="main.java.com.isoftstone.common.common.SysRoleDto" >
+    insert into SYS_ROLE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="enabled != null" >
+        ENABLED,
+      </if>
+      <if test="pId != null" >
+        P_ID,
+      </if>
+      <if test="createUser != null" >
+        CREATE_USER,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="dataStatus != null" >
+        DATA_STATUS,
+      </if>
+      <if test="sysType != null" >
+        SYS_TYPE,
+      </if>
+      <if test="menuList != null" >
+        MENU_LIST,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null" >
+        #{enabled,jdbcType=DECIMAL},
+      </if>
+      <if test="pId != null" >
+        #{pId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="dataStatus != null" >
+        #{dataStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="sysType != null" >
+        #{sysType,jdbcType=DECIMAL},
+      </if>
+      <if test="menuList != null" >
+        #{menuList,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

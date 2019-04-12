@@ -1,0 +1,36 @@
+server:
+  port: 9204
+
+spring:
+  application:
+    name: comm-task-service
+  datasource:
+    master:
+      jdbc-url: jdbc:mysql://49.4.53.219:3306/ipage_dev?useUnicode=true&useSSL=false&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE
+      username: ipage_dev
+      password: i%*01Q2w#e$rpdev
+      driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  mapper-locations: classpath:mapping/*.xml,mapping/*/*.xml,mapping/*/*/*.xml
+  type-aliases-package: com.isoftstone.ioc.domain
+
+pagehelper:
+  reasonable:true
+  supportMethodsArguments:true
+  params:count=countSql
+
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+            defaultZone: http://localhost:8101/eureka/
+
+endpoints:
+ shutdown:
+  enabled: true
+ioc:
+  quartzProper: /quartz.properties

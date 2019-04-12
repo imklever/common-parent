@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.isoftstone.common.backup.mapper.common.sys.SysJdbcDtoMapper" >
+  <resultMap id="BaseResultMap" type="com.isoftstone.common.common.sys.SysJdbcDto" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="jdbc_url" property="jdbcUrl" jdbcType="VARCHAR" />
+    <result column="user" property="user" jdbcType="VARCHAR" />
+    <result column="pass_word" property="passWord" jdbcType="VARCHAR" />
+    <result column="driver_name" property="driverName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, jdbc_url, user, pass_word, driver_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_jdbc
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="findAll" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_jdbc
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_jdbc
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.isoftstone.common.common.sys.SysJdbcDto" >
+    insert into sys_jdbc (id, name, jdbc_url, 
+      user, pass_word, driver_name
+      )
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{jdbcUrl,jdbcType=VARCHAR}, 
+      #{user,jdbcType=VARCHAR}, #{passWord,jdbcType=VARCHAR}, #{driverName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.isoftstone.common.common.sys.SysJdbcDto" >
+    insert into sys_jdbc
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="jdbcUrl != null" >
+        jdbc_url,
+      </if>
+      <if test="user != null" >
+        user,
+      </if>
+      <if test="passWord != null" >
+        pass_word,
+      </if>
+      <if test="driverName != null" >
+        driver_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="jdbcUrl != null" >
+        #{jdbcUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="user != null" >
+        #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="passWord != null" >
+        #{passWord,jdbcType=VARCHAR},
+      </if>
+      <if test="driverName != null" >
+        #{driverName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.isoftstone.common.common.sys.SysJdbcDto" >
+    update sys_jdbc
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="jdbcUrl != null" >
+        jdbc_url = #{jdbcUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="user != null" >
+        user = #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="passWord != null" >
+        pass_word = #{passWord,jdbcType=VARCHAR},
+      </if>
+      <if test="driverName != null" >
+        driver_name = #{driverName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.isoftstone.common.common.sys.SysJdbcDto" >
+    update sys_jdbc
+    set name = #{name,jdbcType=VARCHAR},
+      jdbc_url = #{jdbcUrl,jdbcType=VARCHAR},
+      user = #{user,jdbcType=VARCHAR},
+      pass_word = #{passWord,jdbcType=VARCHAR},
+      driver_name = #{driverName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

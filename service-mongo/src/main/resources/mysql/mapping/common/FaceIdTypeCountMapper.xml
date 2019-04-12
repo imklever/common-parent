@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.isoftstone.common.mongobackup.mapper.FaceIdTypeCountDtoMapper" >
+  <resultMap id="FaceIdTypeCountMap" type="com.isoftstone.common.mongobackup.domain.mysql.FaceIdTypeCountDto" >
+  	 <result column="face_type" property="faceType" jdbcType="VARCHAR" />
+     <result column="face_count" property="faceCount" jdbcType="INTEGER" />
+  </resultMap>
+  <!-- 统计年龄的人数  -->
+  <select id="selectTypeCount" resultMap="FaceIdTypeCountMap">
+    SELECT 'all' AS face_type,COUNT(1) AS face_count FROM (SELECT DISTINCT jc.face_id FROM jd_log_collection jc 
+                  where jc.unit_id= #{unitId,jdbcType=VARCHAR} and jc.appeared_date=#{appearedDate,jdbcType=VARCHAR}
+                  AND jc.appeared_hour  <![CDATA[ <= ]]> #{appearedHour,jdbcType=VARCHAR} ) t_gender 
+    UNION
+    SELECT gender as face_type,COUNT(1) AS face_count  
+           FROM (
+              SELECT DISTINCT lc.face_id,dict.name AS gender
+               FROM jd_log_collection lc 
+               LEFT JOIN jd_face_id_collection fc ON lc.face_id=fc.face_id
+               left join (SELECT name,dict_value FROM sys_dict WHERE  dict_type='gender' AND dict_value!='') as dict
+               on fc.gender = dict.dict_value
+    	   where lc.unit_id= #{unitId,jdbcType=VARCHAR} and fc.unit_id= #{unitId,jdbcType=VARCHAR}
+    	   and lc.appeared_date=#{appearedDate,jdbcType=VARCHAR}
+                  AND lc.appeared_hour  <![CDATA[ <= ]]> #{appearedHour,jdbcType=VARCHAR}
+    	   ) t_gender GROUP BY gender 
+    UNION
+    SELECT '1_19' AS face_type,COUNT(DISTINCT fc.face_id) AS face_count FROM jd_log_collection jc 
+         INNER JOIN  jd_face_id_collection fc ON  fc.face_id = jc.face_id 
+         WHERE fc.age <![CDATA[ >= ]]> 1 AND  fc.age <![CDATA[ < ]]> 20 and jc.unit_id= #{unitId,jdbcType=VARCHAR} and fc.unit_id= #{unitId,jdbcType=VARCHAR}
+         and jc.appeared_date=#{appearedDate,jdbcType=VARCHAR}
+         and jc.appeared_hour  <![CDATA[ <= ]]> #{appearedHour,jdbcType=VARCHAR}
+	UNION 
+	SELECT '20_29' AS face_type,COUNT(DISTINCT fc.face_id) AS face_count FROM jd_log_collection jc 
+         INNER JOIN  jd_face_id_collection fc ON  fc.face_id = jc.face_id  
+         WHERE fc.age <![CDATA[ >= ]]> 20 AND fc.age <![CDATA[ < ]]> 30 and jc.unit_id= #{unitId,jdbcType=VARCHAR} and fc.unit_id= #{unitId,jdbcType=VARCHAR}
+          and jc.appeared_date=#{appearedDate,jdbcType=VARCHAR}
+         and jc.appeared_hour  <![CDATA[ <= ]]> #{appearedHour,jdbcType=VARCHAR}
+	UNION 
+	SELECT '30_39' AS face_type,COUNT(DISTINCT fc.face_id) AS face_count FROM jd_log_collection jc 
+         INNER JOIN  jd_face_id_collection fc ON  fc.face_id = jc.face_id 
+         WHERE fc.age <![CDATA[ >= ]]> 30 AND fc.age <![CDATA[ < ]]> 40 and jc.unit_id= #{unitId,jdbcType=VARCHAR} and fc.unit_id= #{unitId,jdbcType=VARCHAR}
+          and jc.appeared_date=#{appearedDate,jdbcType=VARCHAR}
+         and jc.appeared_hour  <![CDATA[ <= ]]> #{appearedHour,jdbcType=VARCHAR}
+	UNION
+	SELECT '40_49' AS face_type,COUNT(DISTINCT fc.face_id) AS face_count FROM jd_log_collection jc 
+         INNER JOIN  jd_face_id_collection fc ON  fc.face_id = jc.face_id 
+         WHERE fc.age <![CDATA[ >= ]]> 40 AND fc.age <![CDATA[ < ]]> 50 and jc.unit_id= #{unitId,jdbcType=VARCHAR} and fc.unit_id= #{unitId,jdbcType=VARCHAR}
+          and jc.appeared_date=#{appearedDate,jdbcType=VARCHAR}
+         and jc.appeared_hour  <![CDATA[ <= ]]> #{appearedHour,jdbcType=VARCHAR}
+	UNION 
+	SELECT '50_' AS face_type,COUNT(DISTINCT fc.face_id) AS face_count FROM jd_log_collection jc 
+         INNER JOIN  jd_face_id_collection fc ON  fc.face_id = jc.face_id 
+         WHERE fc.age <![CDATA[ >= ]]> 50 and jc.unit_id= #{unitId,jdbcType=VARCHAR} and fc.unit_id= #{unitId,jdbcType=VARCHAR}
+          and jc.appeared_date=#{appearedDate,jdbcType=VARCHAR}
+         and jc.appeared_hour  <![CDATA[ <= ]]> #{appearedHour,jdbcType=VARCHAR}
+    UNION
+    SELECT '0_1' AS face_type,COUNT(1) AS face_count FROM jd_temp_residence_log WHERE  residence_time  <![CDATA[ >= ]]>0 AND residence_time <![CDATA[ < ]]>1
+	UNION
+	SELECT '1_3' AS face_type,COUNT(1) AS face_count FROM jd_temp_residence_log WHERE  residence_time  <![CDATA[ >= ]]>1 AND residence_time <![CDATA[ < ]]>3
+	UNION
+	SELECT '3_5' AS face_type,COUNT(1) AS face_count FROM jd_temp_residence_log WHERE  residence_time  <![CDATA[ >= ]]>3 AND residence_time <![CDATA[ < ]]>5
+	UNION
+	SELECT '5_10' AS face_type,COUNT(1) AS face_count FROM jd_temp_residence_log WHERE  residence_time  <![CDATA[ >= ]]>5 AND residence_time <![CDATA[ < ]]>10
+	UNION
+	SELECT '10_30' AS face_type,COUNT(1) AS face_count FROM jd_temp_residence_log WHERE  residence_time  <![CDATA[ >= ]]>10 AND residence_time <![CDATA[ < ]]>30
+	UNION 
+	SELECT '30_' AS face_type,COUNT(1) AS face_count FROM jd_temp_residence_log WHERE  residence_time  <![CDATA[ >= ]]>30 
+	UNION
+	SELECT 'avg_residence_time' AS face_type, CASE WHEN SUM(residence_time)/COUNT(1) IS NULL THEN 0
+       ELSE ROUND(SUM(residence_time)/COUNT(1)) END AS face_count  FROM jd_temp_residence_log where residence_time >= 0
+  </select>   
+</mapper>

@@ -1,0 +1,56 @@
+server:
+  port: 9203
+  max-http-header-size: 10240000
+
+spring:
+  application:
+    name: caict-backup-service
+#  rabbitmq:
+#    host: 127.0.0.1
+#    port: 5672
+#    username: guest
+#    password: guest
+#  data:
+#    mongodb:
+#      host: 117.122.226.126
+#      port: 27017
+#     database: qumei_isoftstone
+#      username: isoftstone_db
+#      password: asdf1234
+#      authentication-database: qumei_isoftstone    
+  datasource:
+    master:
+      jdbc-url: jdbc:mysql://192.168.1.21:3306/ipage_caict?useUnicode=true&useSSL=false&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE
+      username: ipage_caict
+      password: 'x%t*y01Qsefe2#sye$r'
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    slave:
+      jdbc-url: jdbc:mysql://192.168.1.21:3306/ipage_caict?useUnicode=true&useSSL=false&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE
+      username: ipage_caict
+      password: 'x%t*y01Qsefe2#sye$r'
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mysql/mapping/*.xml,mysql/mapping/*/*.xml,mysql/mapping/*/*/*.xml
+  type-aliases-package: com.isoftstone.common.backup.mapper
+
+
+#分页配置2选1,在yml中配置或者在 DataSourceConfigurer 中配置
+pagehelper:
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+            defaultZone: http://localhost:8101/eureka/
+
+endpoints:
+ shutdown:
+  enabled: true

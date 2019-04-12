@@ -1,0 +1,44 @@
+server:
+  port: 9205
+  max-http-header-size: 102400
+
+spring:
+  application:
+    name: comm-networm-service
+#  data:
+#    mongodb:
+#     host: 127.0.0.1
+#     port: 27017
+#     database: admin
+#     username: root
+#     password: root
+#     authentication-database: admin
+  datasource:
+    master:
+      jdbc-url: jdbc:mysql://192.168.1.21:3306/ipage_dev?useUnicode=true&useSSL=false&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE
+      username: ipage_dev
+      password: i%*01Q2w#e$rpdev
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    slave:
+      jdbc-url: jdbc:impala://ecs-0001:21050/test;auth=noSasl
+      username: admin
+      password: 0
+      driver-class-name: com.cloudera.impala.jdbc41.Driver
+    #slave:
+      #jdbc-url: jdbc:mysql://114.116.14.172:3306/text2?useUnicode=true&useSSL=false&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE
+      #username: root
+      #password: 123456
+      #driver-class-name: com.mysql.cj.jdbc.Driver
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+            defaultZone: http://localhost:8101/eureka/
+
+endpoints:
+ shutdown:
+  enabled: true

@@ -1,0 +1,51 @@
+server:
+  port: 9203
+  max-http-header-size: 102400
+
+spring:
+  application:
+    name: comm-backup-service
+#  data:
+#    mongodb:
+#      host: 114.116.14.172
+#      port: 27017
+#      database: test
+#      username: root
+#      password: root
+#      authentication-database: admin    
+  datasource:
+    master:
+      jdbc-url: jdbc:mysql://rm-8vbfu4p12zmh3a151ao.mysql.zhangbei.rds.aliyuncs.com:3306/bdm24847799_db?useUnicode=true&useSSL=false&autoReconnect=true&rewriteBatchedStatements=TRUE&zeroDateTimeBehavior=convertToNull
+      username: bdm24847799
+      password: 1Q2w#e$r
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    slave:
+      jdbc-url: jdbc:mysql://rm-8vbfu4p12zmh3a151ao.mysql.zhangbei.rds.aliyuncs.com:3306/bdm24847799_db?useUnicode=true&useSSL=false&autoReconnect=true&rewriteBatchedStatements=TRUE&zeroDateTimeBehavior=convertToNull
+      username: bdm24847799
+      password: 1Q2w#e$r
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mysql/mapping/*.xml,mysql/mapping/*/*.xml,mysql/mapping/*/*/*.xml
+  type-aliases-package: com.isoftstone.common.backup.mapper
+
+
+#分页配置2选1,在yml中配置或者在 DataSourceConfigurer 中配置
+pagehelper:
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+            defaultZone: http://localhost:8101/eureka/
+
+endpoints:
+ shutdown:
+  enabled: true

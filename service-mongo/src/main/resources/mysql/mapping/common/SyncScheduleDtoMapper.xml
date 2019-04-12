@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.isoftstone.common.mongobackup.mapper.SyncScheduleDtoMapper" >
+  <resultMap id="BaseResultMap" type="com.isoftstone.common.jd.SyncScheduleDto" >
+    <result column="id" property="id" jdbcType="VARCHAR" />
+    <result column="sync_time" property="syncTime" jdbcType="VARCHAR" />
+  </resultMap>
+    <sql id="Base_Column_List" >
+    id,sync_time
+  </sql>
+  <select id="selectOne" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from jd_sync_schedule limit 1
+  </select>
+  <insert id="insert"  parameterType="com.isoftstone.common.jd.SyncScheduleDto" >   
+    insert into jd_sync_schedule (id,sync_time)
+    values (#{id,jdbcType=VARCHAR},#{syncTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="deleteAll">
+    delete from jd_sync_schedule
+  </insert>
+</mapper>

@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.isoftstone.common.mongobackup.mapper.HourStatisticsDtoMapper" >
+  <resultMap id="BaseResultMap" type="com.isoftstone.common.jd.HourStatisticsDto" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="unit_id" property="unitId" jdbcType="VARCHAR" />
+    <result column="date_time" property="dateTime" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="zero_count" property="zeroCount" jdbcType="DECIMAL" />
+    <result column="one_count" property="oneCount" jdbcType="DECIMAL" />
+    <result column="two_count" property="twoCount" jdbcType="DECIMAL" />
+    <result column="three_count" property="threeCount" jdbcType="DECIMAL" />
+    <result column="four_count" property="fourCount" jdbcType="DECIMAL" />
+    <result column="five_count" property="fiveCount" jdbcType="DECIMAL" />
+    <result column="six_count" property="sixCount" jdbcType="DECIMAL" />
+    <result column="seven_count" property="sevenCount" jdbcType="DECIMAL" />
+    <result column="eight_count" property="eightCount" jdbcType="DECIMAL" />
+    <result column="nine_count" property="nineCount" jdbcType="DECIMAL" />
+    <result column="ten_count" property="tenCount" jdbcType="DECIMAL" />
+    <result column="eleven_count" property="elevenCount" jdbcType="DECIMAL" />
+    <result column="twelve_count" property="twelveCount" jdbcType="DECIMAL" />
+    <result column="thirteen_count" property="thirteenCount" jdbcType="DECIMAL" />
+    <result column="forteen_count" property="forteenCount" jdbcType="DECIMAL" />
+    <result column="fifteen_count" property="fifteenCount" jdbcType="DECIMAL" />
+    <result column="sixteen_count" property="sixteenCount" jdbcType="DECIMAL" />
+    <result column="seventeen_count" property="seventeenCount" jdbcType="DECIMAL" />
+    <result column="eighteen_count" property="eighteenCount" jdbcType="DECIMAL" />
+    <result column="ninteen_count" property="ninteenCount" jdbcType="DECIMAL" />
+    <result column="twenty_count" property="twentyCount" jdbcType="DECIMAL" />
+    <result column="twentyone_count" property="twentyoneCount" jdbcType="DECIMAL" />
+    <result column="twentytwo_count" property="twentytwoCount" jdbcType="DECIMAL" />
+    <result column="twentythree_count" property="twentythreeCount" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, unit_id, date_time,gender, zero_count, one_count, two_count, three_count, four_count, 
+    five_count, six_count, seven_count, eight_count, nine_count, ten_count, eleven_count, 
+    twelve_count, thirteen_count, forteen_count, fifteen_count, sixteen_count, seventeen_count, 
+    eighteen_count, ninteen_count, twenty_count, twentyone_count, twentytwo_count, twentythree_count
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from jd_hour_statistics
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByDateTime" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from jd_hour_statistics
+    where date_time = #{dateTime,jdbcType=VARCHAR} and unit_id = #{unitId,jdbcType=VARCHAR} 
+  </select>
+  <delete id="deleteByDateTime" parameterType="java.util.Map" >
+    delete from jd_hour_statistics
+    where date_time = #{dateTime,jdbcType=VARCHAR} and unit_id = #{unitId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.isoftstone.common.jd.HourStatisticsDto" >
+    insert into jd_hour_statistics (id, unit_id, date_time, gender,
+      zero_count, one_count, two_count, 
+      three_count, four_count, five_count, 
+      six_count, seven_count, eight_count, 
+      nine_count, ten_count, eleven_count, 
+      twelve_count, thirteen_count, forteen_count, 
+      fifteen_count, sixteen_count, seventeen_count, 
+      eighteen_count, ninteen_count, twenty_count, 
+      twentyone_count, twentytwo_count, twentythree_count
+      )
+    values (#{id,jdbcType=VARCHAR}, #{unitId,jdbcType=VARCHAR}, #{dateTime,jdbcType=VARCHAR},  #{gender,jdbcType=VARCHAR}, 
+      #{zeroCount,jdbcType=DECIMAL}, #{oneCount,jdbcType=DECIMAL}, #{twoCount,jdbcType=DECIMAL}, 
+      #{threeCount,jdbcType=DECIMAL}, #{fourCount,jdbcType=DECIMAL}, #{fiveCount,jdbcType=DECIMAL}, 
+      #{sixCount,jdbcType=DECIMAL}, #{sevenCount,jdbcType=DECIMAL}, #{eightCount,jdbcType=DECIMAL}, 
+      #{nineCount,jdbcType=DECIMAL}, #{tenCount,jdbcType=DECIMAL}, #{elevenCount,jdbcType=DECIMAL}, 
+      #{twelveCount,jdbcType=DECIMAL}, #{thirteenCount,jdbcType=DECIMAL}, #{forteenCount,jdbcType=DECIMAL}, 
+      #{fifteenCount,jdbcType=DECIMAL}, #{sixteenCount,jdbcType=DECIMAL}, #{seventeenCount,jdbcType=DECIMAL}, 
+      #{eighteenCount,jdbcType=DECIMAL}, #{ninteenCount,jdbcType=DECIMAL}, #{twentyCount,jdbcType=DECIMAL}, 
+      #{twentyoneCount,jdbcType=DECIMAL}, #{twentytwoCount,jdbcType=DECIMAL}, #{twentythreeCount,jdbcType=DECIMAL}
+      )
+  </insert>
+   <insert id="insertBatch" >
+    insert into jd_hour_statistics (id, unit_id, date_time, gender,
+      zero_count, one_count, two_count, 
+      three_count, four_count, five_count, 
+      six_count, seven_count, eight_count, 
+      nine_count, ten_count, eleven_count, 
+      twelve_count, thirteen_count, forteen_count, 
+      fifteen_count, sixteen_count, seventeen_count, 
+      eighteen_count, ninteen_count, twenty_count, 
+      twentyone_count, twentytwo_count, twentythree_count
+      )
+    values 
+     <foreach collection ="list" item="dto" separator =",">
+    (#{dto.id,jdbcType=VARCHAR}, #{dto.unitId,jdbcType=VARCHAR}, #{dto.dateTime,jdbcType=VARCHAR},  #{dto.gender,jdbcType=VARCHAR}, 
+      #{dto.zeroCount,jdbcType=DECIMAL}, #{dto.oneCount,jdbcType=DECIMAL}, #{dto.twoCount,jdbcType=DECIMAL}, 
+      #{dto.threeCount,jdbcType=DECIMAL}, #{dto.fourCount,jdbcType=DECIMAL}, #{dto.fiveCount,jdbcType=DECIMAL}, 
+      #{dto.sixCount,jdbcType=DECIMAL}, #{dto.sevenCount,jdbcType=DECIMAL}, #{dto.eightCount,jdbcType=DECIMAL}, 
+      #{dto.nineCount,jdbcType=DECIMAL}, #{dto.tenCount,jdbcType=DECIMAL}, #{dto.elevenCount,jdbcType=DECIMAL}, 
+      #{dto.twelveCount,jdbcType=DECIMAL}, #{dto.thirteenCount,jdbcType=DECIMAL}, #{dto.forteenCount,jdbcType=DECIMAL}, 
+      #{dto.fifteenCount,jdbcType=DECIMAL}, #{dto.sixteenCount,jdbcType=DECIMAL}, #{dto.seventeenCount,jdbcType=DECIMAL}, 
+      #{dto.eighteenCount,jdbcType=DECIMAL}, #{dto.ninteenCount,jdbcType=DECIMAL}, #{dto.twentyCount,jdbcType=DECIMAL}, 
+      #{dto.twentyoneCount,jdbcType=DECIMAL}, #{dto.twentytwoCount,jdbcType=DECIMAL}, #{dto.twentythreeCount,jdbcType=DECIMAL}
+      )
+    </foreach>
+  </insert>
+  <insert id="insertSelective" parameterType="com.isoftstone.common.jd.HourStatisticsDto" >
+    insert into jd_hour_statistics
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="unitId != null" >
+        unit_id,
+      </if>
+      <if test="dateTime != null" >
+        date_time,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="zeroCount != null" >
+        zero_count,
+      </if>
+      <if test="oneCount != null" >
+        one_count,
+      </if>
+      <if test="twoCount != null" >
+        two_count,
+      </if>
+      <if test="threeCount != null" >
+        three_count,
+      </if>
+      <if test="fourCount != null" >
+        four_count,
+      </if>
+      <if test="fiveCount != null" >
+        five_count,
+      </if>
+      <if test="sixCount != null" >
+        six_count,
+      </if>
+      <if test="sevenCount != null" >
+        seven_count,
+      </if>
+      <if test="eightCount != null" >
+        eight_count,
+      </if>
+      <if test="nineCount != null" >
+        nine_count,
+      </if>
+      <if test="tenCount != null" >
+        ten_count,
+      </if>
+      <if test="elevenCount != null" >
+        eleven_count,
+      </if>
+      <if test="twelveCount != null" >
+        twelve_count,
+      </if>
+      <if test="thirteenCount != null" >
+        thirteen_count,
+      </if>
+      <if test="forteenCount != null" >
+        forteen_count,
+      </if>
+      <if test="fifteenCount != null" >
+        fifteen_count,
+      </if>
+      <if test="sixteenCount != null" >
+        sixteen_count,
+      </if>
+      <if test="seventeenCount != null" >
+        seventeen_count,
+      </if>
+      <if test="eighteenCount != null" >
+        eighteen_count,
+      </if>
+      <if test="ninteenCount != null" >
+        ninteen_count,
+      </if>
+      <if test="twentyCount != null" >
+        twenty_count,
+      </if>
+      <if test="twentyoneCount != null" >
+        twentyone_count,
+      </if>
+      <if test="twentytwoCount != null" >
+        twentytwo_count,
+      </if>
+      <if test="twentythreeCount != null" >
+        twentythree_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="unitId != null" >
+        #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="dateTime != null" >
+        #{dateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="zeroCount != null" >
+        #{zeroCount,jdbcType=DECIMAL},
+      </if>
+      <if test="oneCount != null" >
+        #{oneCount,jdbcType=DECIMAL},
+      </if>
+      <if test="twoCount != null" >
+        #{twoCount,jdbcType=DECIMAL},
+      </if>
+      <if test="threeCount != null" >
+        #{threeCount,jdbcType=DECIMAL},
+      </if>
+      <if test="fourCount != null" >
+        #{fourCount,jdbcType=DECIMAL},
+      </if>
+      <if test="fiveCount != null" >
+        #{fiveCount,jdbcType=DECIMAL},
+      </if>
+      <if test="sixCount != null" >
+        #{sixCount,jdbcType=DECIMAL},
+      </if>
+      <if test="sevenCount != null" >
+        #{sevenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="eightCount != null" >
+        #{eightCount,jdbcType=DECIMAL},
+      </if>
+      <if test="nineCount != null" >
+        #{nineCount,jdbcType=DECIMAL},
+      </if>
+      <if test="tenCount != null" >
+        #{tenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="elevenCount != null" >
+        #{elevenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="twelveCount != null" >
+        #{twelveCount,jdbcType=DECIMAL},
+      </if>
+      <if test="thirteenCount != null" >
+        #{thirteenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="forteenCount != null" >
+        #{forteenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="fifteenCount != null" >
+        #{fifteenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="sixteenCount != null" >
+        #{sixteenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="seventeenCount != null" >
+        #{seventeenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="eighteenCount != null" >
+        #{eighteenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="ninteenCount != null" >
+        #{ninteenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="twentyCount != null" >
+        #{twentyCount,jdbcType=DECIMAL},
+      </if>
+      <if test="twentyoneCount != null" >
+        #{twentyoneCount,jdbcType=DECIMAL},
+      </if>
+      <if test="twentytwoCount != null" >
+        #{twentytwoCount,jdbcType=DECIMAL},
+      </if>
+      <if test="twentythreeCount != null" >
+        #{twentythreeCount,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.isoftstone.common.jd.HourStatisticsDto" >
+    update jd_hour_statistics
+    <set >
+      <if test="unitId != null" >
+        unit_id = #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="dateTime != null" >
+        date_time = #{dateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+         gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="zeroCount != null" >
+        zero_count = #{zeroCount,jdbcType=DECIMAL},
+      </if>
+      <if test="oneCount != null" >
+        one_count = #{oneCount,jdbcType=DECIMAL},
+      </if>
+      <if test="twoCount != null" >
+        two_count = #{twoCount,jdbcType=DECIMAL},
+      </if>
+      <if test="threeCount != null" >
+        three_count = #{threeCount,jdbcType=DECIMAL},
+      </if>
+      <if test="fourCount != null" >
+        four_count = #{fourCount,jdbcType=DECIMAL},
+      </if>
+      <if test="fiveCount != null" >
+        five_count = #{fiveCount,jdbcType=DECIMAL},
+      </if>
+      <if test="sixCount != null" >
+        six_count = #{sixCount,jdbcType=DECIMAL},
+      </if>
+      <if test="sevenCount != null" >
+        seven_count = #{sevenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="eightCount != null" >
+        eight_count = #{eightCount,jdbcType=DECIMAL},
+      </if>
+      <if test="nineCount != null" >
+        nine_count = #{nineCount,jdbcType=DECIMAL},
+      </if>
+      <if test="tenCount != null" >
+        ten_count = #{tenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="elevenCount != null" >
+        eleven_count = #{elevenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="twelveCount != null" >
+        twelve_count = #{twelveCount,jdbcType=DECIMAL},
+      </if>
+      <if test="thirteenCount != null" >
+        thirteen_count = #{thirteenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="forteenCount != null" >
+        forteen_count = #{forteenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="fifteenCount != null" >
+        fifteen_count = #{fifteenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="sixteenCount != null" >
+        sixteen_count = #{sixteenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="seventeenCount != null" >
+        seventeen_count = #{seventeenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="eighteenCount != null" >
+        eighteen_count = #{eighteenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="ninteenCount != null" >
+        ninteen_count = #{ninteenCount,jdbcType=DECIMAL},
+      </if>
+      <if test="twentyCount != null" >
+        twenty_count = #{twentyCount,jdbcType=DECIMAL},
+      </if>
+      <if test="twentyoneCount != null" >
+        twentyone_count = #{twentyoneCount,jdbcType=DECIMAL},
+      </if>
+      <if test="twentytwoCount != null" >
+        twentytwo_count = #{twentytwoCount,jdbcType=DECIMAL},
+      </if>
+      <if test="twentythreeCount != null" >
+        twentythree_count = #{twentythreeCount,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.isoftstone.common.jd.HourStatisticsDto" >
+    update jd_hour_statistics
+    set unit_id = #{unitId,jdbcType=VARCHAR},
+      date_time = #{dateTime,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR}, 
+      zero_count = #{zeroCount,jdbcType=DECIMAL},
+      one_count = #{oneCount,jdbcType=DECIMAL},
+      two_count = #{twoCount,jdbcType=DECIMAL},
+      three_count = #{threeCount,jdbcType=DECIMAL},
+      four_count = #{fourCount,jdbcType=DECIMAL},
+      five_count = #{fiveCount,jdbcType=DECIMAL},
+      six_count = #{sixCount,jdbcType=DECIMAL},
+      seven_count = #{sevenCount,jdbcType=DECIMAL},
+      eight_count = #{eightCount,jdbcType=DECIMAL},
+      nine_count = #{nineCount,jdbcType=DECIMAL},
+      ten_count = #{tenCount,jdbcType=DECIMAL},
+      eleven_count = #{elevenCount,jdbcType=DECIMAL},
+      twelve_count = #{twelveCount,jdbcType=DECIMAL},
+      thirteen_count = #{thirteenCount,jdbcType=DECIMAL},
+      forteen_count = #{forteenCount,jdbcType=DECIMAL},
+      fifteen_count = #{fifteenCount,jdbcType=DECIMAL},
+      sixteen_count = #{sixteenCount,jdbcType=DECIMAL},
+      seventeen_count = #{seventeenCount,jdbcType=DECIMAL},
+      eighteen_count = #{eighteenCount,jdbcType=DECIMAL},
+      ninteen_count = #{ninteenCount,jdbcType=DECIMAL},
+      twenty_count = #{twentyCount,jdbcType=DECIMAL},
+      twentyone_count = #{twentyoneCount,jdbcType=DECIMAL},
+      twentytwo_count = #{twentytwoCount,jdbcType=DECIMAL},
+      twentythree_count = #{twentythreeCount,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

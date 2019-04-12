@@ -1,0 +1,46 @@
+server:
+  port: 9301
+
+spring:
+  application:
+    name: comm-backup-mongodb-service
+  data:
+    mongodb:
+      #uri: mongodb://root:Softstone01@jmongo-hb1-prod-mongo-0fircktq1c1.jmiss.jdcloud.com:27017
+      host: 116.196.93.183
+      port: 27017
+      database: qumei_isoftstone
+      username: isoftstone_db
+      password: asdf1234
+      authentication-database: qumei_isoftstone    
+  datasource:
+    url: jdbc:mysql://jddb-cn-north-1-40d1024ca28440c1.jcloud.com:3306/account_and_statistics?useUnicode=true&useSSL=false&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE
+    username: isoftstone
+    password: Softstone01
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+mybatis:
+  mapper-locations: classpath:mysql/mapping/common/*.xml
+  type-aliases-package: com.isoftstone.common.mongobackup.mapper
+
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+            defaultZone: http://localhost:8101/eureka/
+
+endpoints:
+ shutdown:
+  enabled: true
+  
+# 京东数据库同步
+jd:
+  data:
+    sync: true
+    cron: 0 0/5 * * * ?
+    

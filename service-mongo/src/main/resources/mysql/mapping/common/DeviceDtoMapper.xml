@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.isoftstone.common.mongobackup.mapper.DeviceDtoMapper" >
+  <resultMap id="BaseResultMap" type="com.isoftstone.common.mongobackup.domain.mysql.DeviceDto" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="mac" property="mac" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="typeid" property="typeid" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="type_state" property="typeState" jdbcType="INTEGER"/>
+    <result column="store_id" property="storeId" jdbcType="VARCHAR"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, mac, remark, typeid, create_time,type_state,store_id
+  </sql>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select device.id,device.name,device.mac,device.typeid,deviceType.type_state,device.remark,device.create_time,device.store_id    
+    from jd_device device
+    left join jd_device_type deviceType on deviceType.id = device.typeid
+    where deviceType.type_state in(0,1)     
+  </select>
+  <select id="selectByTypeId" resultMap="BaseResultMap"   parameterType="java.lang.String" >
+    select device.id,device.name,device.mac,device.typeid,deviceType.type_state,device.remark,device.create_time,device.store_id    
+    from jd_device device
+    left join jd_device_type deviceType on deviceType.id = device.typeid
+    where deviceType.type_state in(0,1) and  deviceType.id in (1,2,4)
+  </select>
+</mapper>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.com.isoftstone.common.backup.mapper.common.SysJdbcDtoMapper" >
+  <resultMap id="BaseResultMap" type="main.java.com.isoftstone.common.common.SysJdbcDto" >
+    <result column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="JDBC_URL" property="jdbcUrl" jdbcType="VARCHAR" />
+    <result column="USER1" property="user1" jdbcType="VARCHAR" />
+    <result column="PASS_WORD" property="passWord" jdbcType="VARCHAR" />
+    <result column="DRIVER_NAME" property="driverName" jdbcType="VARCHAR" />
+    <result column="DATABASE_TYPE" property="databaseType" jdbcType="DECIMAL" />
+  </resultMap>
+  <insert id="insert" parameterType="main.java.com.isoftstone.common.common.SysJdbcDto" >
+    insert into SYS_JDBC (ID, NAME, JDBC_URL, 
+      USER1, PASS_WORD, DRIVER_NAME, 
+      DATABASE_TYPE)
+    values (#{id,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, #{jdbcUrl,jdbcType=VARCHAR}, 
+      #{user1,jdbcType=VARCHAR}, #{passWord,jdbcType=VARCHAR}, #{driverName,jdbcType=VARCHAR}, 
+      #{databaseType,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="main.java.com.isoftstone.common.common.SysJdbcDto" >
+    insert into SYS_JDBC
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="jdbcUrl != null" >
+        JDBC_URL,
+      </if>
+      <if test="user1 != null" >
+        USER1,
+      </if>
+      <if test="passWord != null" >
+        PASS_WORD,
+      </if>
+      <if test="driverName != null" >
+        DRIVER_NAME,
+      </if>
+      <if test="databaseType != null" >
+        DATABASE_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="jdbcUrl != null" >
+        #{jdbcUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="user1 != null" >
+        #{user1,jdbcType=VARCHAR},
+      </if>
+      <if test="passWord != null" >
+        #{passWord,jdbcType=VARCHAR},
+      </if>
+      <if test="driverName != null" >
+        #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="databaseType != null" >
+        #{databaseType,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+</mapper>

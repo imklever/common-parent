@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.isoftstone.common.mapper.CommonSqlMapper" >
+	<select id="getSqlQuery" resultType="java.util.LinkedHashMap" parameterType="java.util.Map" >
+   			${map.IOC_SQL}
+    </select>
+    <update id="getUpdateSql"  parameterType="java.util.Map" >
+   			${map.IOC_SQL}
+    </update>
+     <insert id="getInsertSql"   parameterType="java.util.Map" >
+            ${map.IOC_SQL}
+     </insert>
+     <insert id="getInsertSqlAndId" useGeneratedKeys="true"  keyProperty="map.id"   parameterType="java.util.Map" >
+     		${map.IOC_SQL}
+     </insert>
+     <delete id="getDeleteSql" parameterType="java.util.Map" >
+     		 ${map.IOC_SQL}
+     </delete>
+</mapper>

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	  <parent>
+	    <groupId>com.isoftstone.common</groupId>
+	    <artifactId>common-parent</artifactId>
+	    <version>0.0.1-SNAPSHOT</version>
+	  </parent>
+	<artifactId>service-networm</artifactId>
+	<name>service-networm</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+		<!-- hadoop依赖 -->
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-client</artifactId>
+			<version>3.0.0-cdh6.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-hdfs</artifactId>
+			<version>3.0.0-cdh6.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-common</artifactId>
+			<version>3.0.0-cdh6.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.hive</groupId>
+			<artifactId>hive-jdbc</artifactId>
+			<version>2.1.0</version>
+			<exclusions>
+
+				<exclusion>
+					<artifactId>log4j</artifactId>
+					<groupId>org.apache.logging.log4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>log4j-1.2-api</artifactId>
+					<groupId>org.apache.logging.log4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>log4j-api</artifactId>
+					<groupId>org.apache.logging.log4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>log4j-bom</artifactId>
+					<groupId>org.apache.logging.log4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>log4j-core</artifactId>
+					<groupId>org.apache.logging.log4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>log4j-slf4j-impl</artifactId>
+					<groupId>org.apache.logging.log4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>log4j-to-slf4j</artifactId>
+					<groupId>org.apache.logging.log4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>log4j-web</artifactId>
+					<groupId>org.apache.logging.log4j</groupId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>org.eclipse.jetty.aggregate</groupId>
+					<artifactId>jetty-all</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.hive</groupId>
+					<artifactId>hive-shims</artifactId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jasper-compiler</artifactId>
+					<groupId>tomcat</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jasper-runtime</artifactId>
+					<groupId>tomcat</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>servlet-api</artifactId>
+					<groupId>javax.servlet</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-log4j12</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<exclusion>
+					<groupId>tomcat</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.eclipse.jetty.orbit</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.eclipse.jetty.aggregate</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.servlet</groupId>
+					<artifactId>servlet-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.mortbay.jetty</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- MongoDB -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
+		<!-- 测试环境 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>		
+		<!-- 客户端 -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+		<!-- <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+		</dependency> -->
+        <dependency>
+            <groupId>com.isoftstone.common</groupId>
+            <artifactId>common-service-definition</artifactId>
+           <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.isoftstone.common</groupId>
+            <artifactId>common-service</artifactId>
+           <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+         <dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		<dependency>
+		  <groupId>org.springframework.boot</groupId>
+		  <artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		<!-- 爬虫框架 -->
+		<!-- <dependency>
+		    <groupId>cn.edu.hfut.dmic.webcollector</groupId>
+		    <artifactId>WebCollector</artifactId>
+		    <version>2.73-alpha</version>
+		</dependency> -->
+		<!-- 爬虫框架 -->
+		<dependency>
+		    <groupId>us.codecraft</groupId>
+		    <artifactId>webmagic-core</artifactId>
+		    <version>0.7.3</version>
+		</dependency>
+		<dependency>
+		    <groupId>us.codecraft</groupId>
+		    <artifactId>webmagic-extension</artifactId>
+		    <version>0.7.3</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.4</version>
+			<classifier>jdk15</classifier>
+		</dependency>
+		<dependency>
+			<groupId> org.codehaus.jackson </groupId>
+			<artifactId> jackson-mapper-asl </artifactId>
+			<version> 1.7.1 </version>
+		</dependency>
+		<dependency>
+			<groupId>com.belerweb</groupId>
+			<artifactId>pinyin4j</artifactId>
+			<version>2.5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>htmlunit</artifactId>
+			<version>2.29</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.11.3</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>6.0.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jetbrains</groupId>
+			<artifactId>annotations-java5</artifactId>
+			<version>RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>jaxen</groupId>
+			<artifactId>jaxen</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.quartz-scheduler</groupId>-->
+            <!--<artifactId>quartz</artifactId>-->
+        <!--</dependency>-->
+		<dependency>
+			<groupId>com.aaa</groupId>
+			<artifactId>ImpalaJDBC41</artifactId>
+			<version>1.0.1</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/ImpalaJDBC41.jar</systemPath>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>				
+				<configuration>
+                    <mainClass>com.isoftstone.common.ServiceNetwormApplication</mainClass>
+					<includeSystemScope>true</includeSystemScope>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+			</plugin>
+		<!-- 	<plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <configuration>
+                    <configurationFile>${basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>
+                    <overwrite>true</overwrite>
+                    <verbose>true</verbose>
+                </configuration>
+            </plugin> -->
+		</plugins>
+	</build>
+
+
+</project>

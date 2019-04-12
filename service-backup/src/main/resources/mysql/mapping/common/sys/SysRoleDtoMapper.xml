@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.isoftstone.common.backup.mapper.common.sys.SysRoleDtoMapper" >
+  <resultMap id="BaseResultMap" type="com.isoftstone.common.common.sys.SysRoleDto" >
+    <result column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="enabled" property="enabled" jdbcType="INTEGER" />
+    <result column="p_id" property="pId" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+    <result column="data_status" property="dataStatus" jdbcType="VARCHAR" />
+    <result column="menu_list" property="menuList" jdbcType="VARCHAR" />
+    <result column="sys_type" property="sysType" jdbcType="INTEGER" />
+    <result column="index_path" property="indexPath" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, enabled, p_id, create_user, create_date, 
+    data_status, menu_list,sys_type,index_path
+  </sql>
+  <select id="findByUserId" resultMap="BaseResultMap" parameterType="java.lang.String" >   
+     SELECT role.id,role.name,role.enabled,role.p_id,role.data_status,role.create_user,role.create_date,role.menu_list,
+     role.sys_type,role.index_path FROM sys_role role 
+          LEFT JOIN sys_user_role_link urlink ON urlink.role_id=role.id
+          WHERE urlink.user_id= #{userId,jdbcType=VARCHAR}
+  </select>
+  <insert id="insert" parameterType="com.isoftstone.common.common.sys.SysRoleDto" >
+    insert into sys_role (id, name, enabled, 
+      p_id, create_user, create_date, 
+      data_status, menu_list,sys_type,index_path)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{enabled,jdbcType=INTEGER}, 
+      #{pId,jdbcType=VARCHAR}, #{createUser,jdbcType=VARCHAR}, #{createDate,jdbcType=VARCHAR}, 
+      #{dataStatus,jdbcType=VARCHAR}, #{menuList,jdbcType=VARCHAR},#{sysType,jdbcType=INTEGER},
+      #{indexPath,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.isoftstone.common.common.sys.SysRoleDto" >
+    insert into sys_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="enabled != null" >
+        enabled,
+      </if>
+      <if test="pId != null" >
+        p_id,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="dataStatus != null" >
+        data_status,
+      </if>
+      <if test="menuList != null" >
+        menu_list,
+      </if>
+      <if test="sysType != null" >
+        sys_type,
+      </if>
+      <if test="indexPath != null" >
+        index_path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null" >
+        #{enabled,jdbcType=INTEGER},
+      </if>
+      <if test="pId != null" >
+        #{pId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="dataStatus != null" >
+        #{dataStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="menuList != null" >
+        #{menuList,jdbcType=VARCHAR},
+      </if>
+      <if test="sysType != null" >
+        #{sysType,jdbcType=INTEGER},
+      </if>
+      <if test="indexPath != null" >
+        #{indexPath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

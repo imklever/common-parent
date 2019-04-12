@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.isoftstone.common.backup.mapper.common.sys.SysUserDtoMapper" >
+  <resultMap id="BaseResultMap" type="com.isoftstone.common.common.sys.SysUserDto" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="token" property="token" jdbcType="VARCHAR" />
+    <result column="updatetime" property="updatetime" jdbcType="VARCHAR" />
+    <result column="overduetime" property="overduetime" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+    <result column="data_status" property="dataStatus" jdbcType="VARCHAR" />
+    <result column="unit_id" property="unitId" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR"  /> 
+    <result column="role_list" property="roleList" jdbcType="VARCHAR" />
+    <result column="sys_admin" property="sysAdmin" jdbcType="INTEGER" />
+    <result column="sys_type" property="sysType" jdbcType="INTEGER" />
+    <result column="is_default_pwd" property="isDefaultPwd" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, username, password, token, updatetime, overduetime, create_user, create_date, 
+    data_status, unit_id, role_list,phone,sys_admin,is_default_pwd,sys_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="findByNamePass" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where (username = #{name,jdbcType=VARCHAR} or phone = #{name,jdbcType=VARCHAR} ) AND password=#{password,jdbcType=VARCHAR}
+  </select> 
+  <select id="findByPhone" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where phone = #{phone,jdbcType=VARCHAR} or username = #{phone,jdbcType=VARCHAR}
+  </select>   
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_user
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.isoftstone.common.common.sys.SysUserDto" >
+    insert into sys_user (id, username, password, 
+      token, updatetime, overduetime, 
+      create_user, create_date, data_status, 
+      unit_id, phone,role_list)
+    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{token,jdbcType=VARCHAR}, #{updatetime,jdbcType=VARCHAR}, #{overduetime,jdbcType=VARCHAR}, 
+      #{createUser,jdbcType=VARCHAR}, #{createDate,jdbcType=VARCHAR}, #{dataStatus,jdbcType=VARCHAR}, 
+      #{unitId,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{roleList,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.isoftstone.common.common.sys.SysUserDto" >
+    insert into sys_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+      <if test="overduetime != null" >
+        overduetime,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="dataStatus != null" >
+        data_status,
+      </if>
+      <if test="unitId != null" >
+        unit_id,
+      </if>
+      <if test="roleList != null" >
+        role_list,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="overduetime != null" >
+        #{overduetime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="dataStatus != null" >
+        #{dataStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="unitId != null" >
+        #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleList != null" >
+        #{roleList,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.isoftstone.common.common.sys.SysUserDto" >
+    update sys_user
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="overduetime != null" >
+        overduetime = #{overduetime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="dataStatus != null" >
+        data_status = #{dataStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="unitId != null" >
+        unit_id = #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleList != null" >
+        role_list = #{roleList,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.isoftstone.common.common.sys.SysUserDto" >
+    update sys_user
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=VARCHAR},
+      overduetime = #{overduetime,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=VARCHAR},
+      data_status = #{dataStatus,jdbcType=VARCHAR},
+      unit_id = #{unitId,jdbcType=VARCHAR},
+      role_list = #{roleList,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByUserToken" parameterType="java.util.Map" >
+    update sys_user
+    set overduetime = #{overduetime,jdbcType=VARCHAR}
+    where username = #{name,jdbcType=VARCHAR} AND  token = #{token,jdbcType=VARCHAR}
+  </update>
+  <update id="updateTokenById" parameterType="java.util.Map" >
+    update sys_user
+    set token = #{token,jdbcType=VARCHAR},overduetime = #{overduetime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}  
+  </update> 
+</mapper>

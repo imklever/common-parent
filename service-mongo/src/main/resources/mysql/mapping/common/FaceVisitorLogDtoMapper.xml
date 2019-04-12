@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.isoftstone.common.mongobackup.mapper.FaceVisitorLogDtoMapper" >
+  <resultMap id="BaseResultMap" type="com.isoftstone.common.jd.FaceVisitorLogDto" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="unit_id" property="unitId" jdbcType="VARCHAR" />
+    <result column="face_id" property="faceId" jdbcType="VARCHAR" />
+    <result column="face_date" property="faceDate" jdbcType="VARCHAR" />
+    <result column="date_time" property="dateTime" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="device_type" property="deviceType" jdbcType="INTEGER" />
+     <result column="device" property="device" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, unit_id, face_id, face_date, date_time, image, device_type, device
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from jd_face_visitor_log
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByTime" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jd_face_visitor_log 
+    where date_time <![CDATA[ <= ]]> #{endTime,jdbcType=VARCHAR} and date_time <![CDATA[ >= ]]> #{startTime,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from jd_face_visitor_log
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.isoftstone.common.jd.FaceVisitorLogDto" >
+    insert into jd_face_visitor_log (id, unit_id, face_id, 
+      face_date, date_time, image, 
+      device_type,device)
+    values (#{id,jdbcType=VARCHAR}, #{unitId,jdbcType=VARCHAR}, #{faceId,jdbcType=VARCHAR}, 
+      #{faceDate,jdbcType=VARCHAR}, #{dateTime,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
+      #{deviceType,jdbcType=INTEGER}, #{device,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.isoftstone.common.jd.FaceVisitorLogDto" >
+    insert into jd_face_visitor_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="unitId != null" >
+        unit_id,
+      </if>
+      <if test="faceId != null" >
+        face_id,
+      </if>
+      <if test="faceDate != null" >
+        face_date,
+      </if>
+      <if test="dateTime != null" >
+        date_time,
+      </if>
+      <if test="image != null" >
+        image,
+      </if>
+      <if test="deviceType != null" >
+        device_type,
+      </if>
+      <if test="device != null" >
+        device,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="unitId != null" >
+        #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="faceId != null" >
+        #{faceId,jdbcType=VARCHAR},
+      </if>
+      <if test="faceDate != null" >
+        #{faceDate,jdbcType=VARCHAR},
+      </if>
+      <if test="dateTime != null" >
+        #{dateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceType != null" >
+        #{deviceType,jdbcType=INTEGER},
+      </if>
+      <if test="device != null" >
+        #{device,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.isoftstone.common.jd.FaceVisitorLogDto" >
+    update jd_face_visitor_log
+    <set >
+      <if test="unitId != null" >
+        unit_id = #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="faceId != null" >
+        face_id = #{faceId,jdbcType=VARCHAR},
+      </if>
+      <if test="faceDate != null" >
+        face_date = #{faceDate,jdbcType=VARCHAR},
+      </if>
+      <if test="dateTime != null" >
+        date_time = #{dateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceType != null" >
+        device_type = #{deviceType,jdbcType=INTEGER},
+      </if>
+      <if test="device != null" >
+        device = #{device,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.isoftstone.common.jd.FaceVisitorLogDto" >
+    update jd_face_visitor_log
+    set unit_id = #{unitId,jdbcType=VARCHAR},
+      face_id = #{faceId,jdbcType=VARCHAR},
+      face_date = #{faceDate,jdbcType=VARCHAR},
+      date_time = #{dateTime,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      device = #{device,jdbcType=VARCHAR},
+      device_type = #{deviceType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <insert id="insertBatch" >
+    insert into jd_face_visitor_log (id, unit_id, face_id, 
+      face_date, date_time, image, device_type, device)
+     values
+    <foreach collection ="list" item="dto" separator =",">
+     (#{dto.id,jdbcType=VARCHAR}, #{dto.unitId,jdbcType=VARCHAR}, #{dto.faceId,jdbcType=VARCHAR}, 
+      #{dto.faceDate,jdbcType=VARCHAR}, #{dto.dateTime,jdbcType=VARCHAR}, #{dto.image,jdbcType=VARCHAR}, 
+      #{dto.deviceType,jdbcType=INTEGER}, #{dto.device,jdbcType=VARCHAR})
+    </foreach > 
+  </insert>
+</mapper>

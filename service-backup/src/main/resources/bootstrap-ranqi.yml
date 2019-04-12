@@ -1,0 +1,45 @@
+server:
+  port: 9203
+
+spring:
+  application:
+    name: ranqi-backup-service
+  datasource:
+    master:
+      jdbc-url: jdbc:mysql://114.116.14.172:3306/test?useUnicode=true&useSSL=false&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE
+      username: root
+#      type: com.zaxxer.hikari.HikariDataSource
+      password: 123456
+      driver-class-name: com.mysql.cj.jdbc.Driver
+#    slave:
+#      jdbc-url: jdbc:mysql://114.116.14.172:3306/mysql?useUnicode=true&useSSL=false&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE
+#     username: root
+#      type: com.zaxxer.hikari.HikariDataSource
+#      password: 123456
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mysql/mapping/*.xml,mysql/mapping/*/*.xml,mysql/mapping/*/*/*.xml
+  type-aliases-package: com.isoftstone.common.backup.mapper
+
+
+#分页配置2选1,在yml中配置或者在 DataSourceConfigurer 中配置
+pagehelper:
+#  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+            defaultZone: http://localhost:8101/eureka/
+
+endpoints:
+ shutdown:
+  enabled: true

@@ -1,0 +1,61 @@
+server:
+  port: 9203
+  max-http-header-size: 10240000
+
+spring:
+  application:
+    name: comm-backup-service
+#  rabbitmq:
+#    host: 127.0.0.1
+#    port: 5672
+#    username: guest
+#    password: guest
+#  data:
+#    mongodb:
+#      host: 117.122.226.126
+#      port: 27017
+#     database: qumei_isoftstone
+#      username: isoftstone_db
+#      password: asdf1234
+#      authentication-database: qumei_isoftstone    
+  datasource:
+    master:
+      jdbc-url: jdbc:mysql://192.168.1.21:3306/ipage_dev?useUnicode=true&useSSL=false&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE
+      username: ipage_dev
+      password: 'i%*01Q2w#e$rpdev'
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    slave:
+      jdbc-url: jdbc:mysql://192.168.1.21:3306/zabbix?useUnicode=true&useSSL=false&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE
+      username: zabbix
+      password: '%*01Q2w#e$r'
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mysql/mapping/*.xml,mysql/mapping/*/*.xml,mysql/mapping/*/*/*.xml
+  type-aliases-package: com.isoftstone.common.backup.mapper
+
+
+#分页配置2选1,在yml中配置或者在 DataSourceConfigurer 中配置
+pagehelper:
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+  
+ioc:
+  driverClassName: org.elasticsearch.xpack.sql.jdbc.EsDriver
+  jdbcUrl: jdbc:es://http://49.4.52.114:9200
+  username: test_admin
+  password: x-pack-test-password
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+            defaultZone: http://localhost:8101/eureka/
+
+endpoints:
+ shutdown:
+  enabled: true
