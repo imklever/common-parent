@@ -1,6 +1,11 @@
 package com.isoftstone.common.api;
 
 //import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import com.isoftstone.common.ApiApplication;
+import com.isoftstone.common.api.support.interceptor.CrossDomainInterceptor;
+import com.isoftstone.common.api.support.interceptor.HttpLogInterceptor;
+import com.isoftstone.common.api.support.interceptor.PermissionsInterceptor;
+import com.isoftstone.common.api.support.interceptor.UserInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -8,11 +13,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-import com.isoftstone.common.ApiApplication;
-import com.isoftstone.common.api.support.interceptor.CrossDomainInterceptor;
-import com.isoftstone.common.api.support.interceptor.HttpLogInterceptor;
-import com.isoftstone.common.api.support.interceptor.PermissionsInterceptor;
-import com.isoftstone.common.api.support.interceptor.UserInterceptor;
 
 @Configuration
 //@EnableAutoConfiguration 

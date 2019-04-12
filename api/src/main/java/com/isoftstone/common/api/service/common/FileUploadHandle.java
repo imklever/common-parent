@@ -1,9 +1,9 @@
 package com.isoftstone.common.api.service.common;
 
+import com.isoftstone.common.common.FileAttrDto;
+
 import java.util.List;
 import java.util.Map;
-
-import com.isoftstone.common.common.FileAttrDto;
 
 public interface FileUploadHandle {
 	

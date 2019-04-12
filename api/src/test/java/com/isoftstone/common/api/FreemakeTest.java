@@ -1,22 +1,16 @@
 package com.isoftstone.common.api;
 
+import com.alibaba.fastjson.JSONArray;
+import com.isoftstone.common.util.CommUtil;
+import freemarker.cache.StringTemplateLoader;
+import freemarker.core.ParseException;
+import freemarker.template.*;
+
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
-
-import com.alibaba.fastjson.JSONArray;
-import com.isoftstone.common.common.sys.SysUserDto;
-import com.isoftstone.common.util.CommUtil;
-
-import freemarker.cache.StringTemplateLoader;
-import freemarker.core.ParseException;
-import freemarker.template.Configuration;
-import freemarker.template.MalformedTemplateNameException;
-import freemarker.template.Template;
-import freemarker.template.TemplateException;
-import freemarker.template.TemplateNotFoundException;
 
 public class FreemakeTest {
 	public static void main(String[] args) throws TemplateNotFoundException, 

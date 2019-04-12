@@ -1,11 +1,8 @@
 package com.isoftstone.common.api.util;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.isoftstone.common.api.service.cache.CacheService;
+import com.isoftstone.common.api.service.cache.LocalCacheFactory;
+import com.isoftstone.common.util.JsonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -13,9 +10,10 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.isoftstone.common.api.service.cache.CacheService;
-import com.isoftstone.common.api.service.cache.LocalCacheFactory;
-import com.isoftstone.common.util.JsonService;
+import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 
 @Service
 public class RequestParamsUtils {

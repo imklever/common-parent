@@ -1,12 +1,11 @@
 package com.isoftstone.common.api.util;
 
+import org.springframework.util.StringUtils;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.util.StringUtils;
 
 public class HttpRequestUtils {
 	  public static final String LOCAL_HOST = "127.0.0.1";

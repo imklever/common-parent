@@ -1,12 +1,11 @@
 package com.isoftstone.common.api.controller.mongo;
 
+import com.isoftstone.common.mongo.FileServiceClient;
 import org.common.constant.ApiMapperUrlConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.isoftstone.common.mongo.FileServiceClient;
 @RestController
 @RequestMapping(ApiMapperUrlConstants.FILE)
 public class MongoFileEndpoint {

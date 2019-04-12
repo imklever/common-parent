@@ -1,9 +1,9 @@
 package com.isoftstone.common.api;
 
+import org.springframework.util.StringUtils;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import org.springframework.util.StringUtils;
 
 public class SqlCreateTest {
 	

@@ -1,14 +1,12 @@
 package com.isoftstone.common.api.service.socket.impl;
 
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.simp.SimpMessageSendingOperations;
-import org.springframework.stereotype.Service;
-
 import com.isoftstone.common.api.service.socket.ChatService;
 import com.isoftstone.common.common.MessageDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessageSendingOperations;
+
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 //@Service
 public class ChatServiceImpl implements ChatService{

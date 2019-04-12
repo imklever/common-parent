@@ -1,16 +1,14 @@
 package com.isoftstone.common.api.support.interceptor;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.isoftstone.common.api.service.common.HttpLogService;
+import com.isoftstone.common.api.service.common.SysLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.NamedThreadLocal;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import com.isoftstone.common.api.service.common.HttpLogService;
-import com.isoftstone.common.api.service.common.SysLogService;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Service
 public class HttpLogInterceptor implements HandlerInterceptor{

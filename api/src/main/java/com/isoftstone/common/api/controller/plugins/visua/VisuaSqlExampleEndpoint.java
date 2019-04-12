@@ -1,10 +1,10 @@
 package com.isoftstone.common.api.controller.plugins.visua;
 
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.isoftstone.common.PageInfo;
+import com.isoftstone.common.api.service.plugins.visua.VisuaSqlExampleService;
+import com.isoftstone.common.api.support.APIResult;
+import com.isoftstone.common.plugins.visua.VisuaSqlExample;
+import com.isoftstone.common.plugins.visua.hystrix.HystrixVisuaSqlExampleClient;
 import org.common.constant.ApiMapperUrlConstants;
 import org.common.constant.ErrorCodeConstants;
 import org.common.constant.PageConstants;
@@ -14,11 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.isoftstone.common.PageInfo;
-import com.isoftstone.common.api.service.plugins.visua.VisuaSqlExampleService;
-import com.isoftstone.common.api.support.APIResult;
-import com.isoftstone.common.plugins.visua.VisuaSqlExample;
-import com.isoftstone.common.plugins.visua.hystrix.HystrixVisuaSqlExampleClient;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(ApiMapperUrlConstants.VISUA_SQL)

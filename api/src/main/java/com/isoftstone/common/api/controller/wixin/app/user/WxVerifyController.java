@@ -1,24 +1,17 @@
 package com.isoftstone.common.api.controller.wixin.app.user;
 
-import java.util.Objects;
-
+import cn.binarywang.wx.miniapp.api.WxMaService;
+import cn.binarywang.wx.miniapp.bean.WxMaMessage;
+import cn.binarywang.wx.miniapp.constant.WxMaConstants;
+import com.isoftstone.common.api.controller.wixin.service.WxAppService;
 import org.apache.commons.lang3.StringUtils;
 import org.common.constant.ApiMapperUrlConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.isoftstone.common.api.controller.wixin.service.WxAppService;
-
-import cn.binarywang.wx.miniapp.api.WxMaService;
-import cn.binarywang.wx.miniapp.bean.WxMaMessage;
-import cn.binarywang.wx.miniapp.constant.WxMaConstants;
+import java.util.Objects;
 
 @RestController
 @RequestMapping(ApiMapperUrlConstants.WX_APP_VERIFY)

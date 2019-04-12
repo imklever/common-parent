@@ -1,18 +1,17 @@
 package com.isoftstone.common.api.support;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
-
+import com.isoftstone.common.api.service.cache.CacheService;
+import com.isoftstone.common.api.service.cache.LocalCacheFactory;
+import com.isoftstone.common.common.sys.SysUserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import com.isoftstone.common.api.service.cache.CacheService;
-import com.isoftstone.common.api.service.cache.LocalCacheFactory;
-import com.isoftstone.common.common.sys.SysUserDto;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 public class CacheManageRunner {

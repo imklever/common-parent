@@ -1,23 +1,20 @@
 package com.isoftstone.common.api.service.common.impl;
 
-import java.io.File;
-import java.util.List;
-import java.util.Map;
-
+import com.isoftstone.common.api.service.common.FileUploadHandle;
+import com.isoftstone.common.api.service.oss.OssStorageFactory;
+import com.isoftstone.common.api.util.Video2ImgUtils;
+import com.isoftstone.common.common.FileAttrDto;
+import com.isoftstone.common.plugins.visua.hystrix.HystrixVisuaSqlExampleClient;
+import com.isoftstone.common.util.JsonService;
 import org.common.constant.CommonConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.alibaba.fastjson.JSONObject;
-import com.isoftstone.common.api.service.common.FileUploadHandle;
-import com.isoftstone.common.api.service.oss.OssStorageFactory;
-import com.isoftstone.common.api.support.APIResult;
-import com.isoftstone.common.api.util.Video2ImgUtils;
-import com.isoftstone.common.common.FileAttrDto;
-import com.isoftstone.common.plugins.visua.hystrix.HystrixVisuaSqlExampleClient;
-import com.isoftstone.common.util.JsonService;
+import java.io.File;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class FileUploadHandleImpl implements FileUploadHandle {

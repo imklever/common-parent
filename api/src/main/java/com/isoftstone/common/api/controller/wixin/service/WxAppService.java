@@ -1,9 +1,8 @@
 package com.isoftstone.common.api.controller.wixin.service;
 
-import com.isoftstone.common.api.controller.wixin.bean.WxConfigBean;
-
 import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.message.WxMaMessageRouter;
+import com.isoftstone.common.api.controller.wixin.bean.WxConfigBean;
 
 public interface WxAppService {
 

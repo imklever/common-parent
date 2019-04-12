@@ -1,12 +1,14 @@
 package com.isoftstone.common.api.controller.ali.pay;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletResponse;
-
+import com.alibaba.fastjson.JSONObject;
+import com.alipay.api.AlipayApiException;
+import com.alipay.api.AlipayClient;
+import com.alipay.api.DefaultAlipayClient;
+import com.alipay.api.request.AlipayTradeWapPayRequest;
+import com.isoftstone.common.api.domain.comon.AlipayConfig;
+import com.isoftstone.common.api.support.APIResult;
+import com.isoftstone.common.plugins.visua.hystrix.HystrixVisuaSqlExampleClient;
+import com.isoftstone.common.util.JsonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -19,15 +21,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.alibaba.fastjson.JSONObject;
-import com.alipay.api.AlipayApiException;
-import com.alipay.api.AlipayClient;
-import com.alipay.api.DefaultAlipayClient;
-import com.alipay.api.request.AlipayTradeWapPayRequest;
-import com.isoftstone.common.api.domain.comon.AlipayConfig;
-import com.isoftstone.common.api.support.APIResult;
-import com.isoftstone.common.plugins.visua.hystrix.HystrixVisuaSqlExampleClient;
-import com.isoftstone.common.util.JsonService;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 @RestController
 @RequestMapping("/payali")
 public class AliPayEndpoint {

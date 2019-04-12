@@ -1,17 +1,16 @@
 package com.isoftstone.common.api.service.plugins.visua.impl;
 
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.isoftstone.common.api.service.plugins.visua.SysJdbcService;
 import com.isoftstone.common.common.sys.SysJdbcDto;
 import com.isoftstone.common.util.JsonService;
 import com.isoftstone.common.util.ServiceException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 @Service
 public class SysJdbcServiceImpl implements SysJdbcService{
 	@Autowired

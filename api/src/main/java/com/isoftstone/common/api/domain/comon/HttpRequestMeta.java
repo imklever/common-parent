@@ -1,8 +1,7 @@
 package com.isoftstone.common.api.domain.comon;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 public class HttpRequestMeta {
 	   private String remoteAddress;

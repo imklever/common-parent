@@ -1,10 +1,9 @@
 package com.isoftstone.common.api.service.plugins.visua;
 
-import java.util.List;
+import com.isoftstone.common.plugins.visua.VisuaSqlExample;
 
 import javax.servlet.http.HttpServletResponse;
-
-import com.isoftstone.common.plugins.visua.VisuaSqlExample;
+import java.util.List;
 
 
 public interface VisuaSqlExampleService {

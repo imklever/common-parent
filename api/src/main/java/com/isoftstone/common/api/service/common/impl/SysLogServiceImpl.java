@@ -1,30 +1,26 @@
 package com.isoftstone.common.api.service.common.impl;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.isoftstone.common.api.domain.comon.HttpRequestMeta;
+import com.isoftstone.common.api.service.cache.CacheService;
+import com.isoftstone.common.api.service.cache.LocalCacheFactory;
+import com.isoftstone.common.api.service.common.ExceptionLogService;
+import com.isoftstone.common.api.service.common.SysLogService;
+import com.isoftstone.common.api.util.HttpRequestUtils;
+import com.isoftstone.common.common.sys.SysUserDto;
+import com.isoftstone.common.plugins.visua.VisuaSqlExample;
+import com.isoftstone.common.plugins.visua.hystrix.HystrixVisuaSqlExampleClient;
+import com.isoftstone.common.util.JsonService;
 import org.common.constant.ErrorCodeConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.isoftstone.common.api.domain.comon.HttpRequestMeta;
-import com.isoftstone.common.api.service.cache.CacheService;
-import com.isoftstone.common.api.service.cache.LocalCacheFactory;
-import com.isoftstone.common.api.service.common.ExceptionLogService;
-import com.isoftstone.common.api.service.common.SysLogService;
-import com.isoftstone.common.api.service.interceptor.PublicBusinessService;
-import com.isoftstone.common.api.support.APIResult;
-import com.isoftstone.common.api.util.HttpRequestUtils;
-import com.isoftstone.common.common.sys.SysUserDto;
-import com.isoftstone.common.plugins.visua.VisuaSqlExample;
-import com.isoftstone.common.plugins.visua.hystrix.HystrixVisuaSqlExampleClient;
-import com.isoftstone.common.util.JsonService;
+import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class SysLogServiceImpl implements SysLogService {

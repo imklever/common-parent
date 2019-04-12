@@ -1,10 +1,9 @@
 package com.isoftstone.common.api.util;
 
+import com.isoftstone.common.util.CommUtil;
 import org.common.constant.CommonConstants;
 import org.springframework.scheduling.support.CronSequenceGenerator;
 import org.springframework.util.StringUtils;
-
-import com.isoftstone.common.util.CommUtil;
 
 public class ArgsValidateUtils {
 	public static String validateResult(String key, Object value, Object obj) {

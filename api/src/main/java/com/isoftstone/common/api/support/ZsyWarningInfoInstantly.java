@@ -1,16 +1,14 @@
 package com.isoftstone.common.api.support;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
-
 import com.isoftstone.common.api.support.websocket.WebSocketServer;
 import com.isoftstone.common.plugins.visua.hystrix.HystrixVisuaSqlExampleClient;
 import com.isoftstone.common.util.JsonService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class ZsyWarningInfoInstantly {

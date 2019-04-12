@@ -1,18 +1,5 @@
 package com.isoftstone.common.api.service.plugins.visua.impl;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletResponse;
-
-import org.common.constant.CommonConstants;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.isoftstone.common.PageInfo;
@@ -24,6 +11,17 @@ import com.isoftstone.common.plugins.visua.hystrix.HystrixVisuaSqlExampleClient;
 import com.isoftstone.common.plugins.visua.vo.VisuaSqlVo;
 import com.isoftstone.common.util.JsonService;
 import com.isoftstone.common.util.SqlTemplateReplacement;
+import org.common.constant.CommonConstants;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class VisuaSqlExampleServiceImpl implements VisuaSqlExampleService {

@@ -1,10 +1,10 @@
 package com.isoftstone.common.api.support;
 
-import java.util.concurrent.Executors;
-
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
+
+import java.util.concurrent.Executors;
 
 @Configuration
 public class ScheduleConfig implements SchedulingConfigurer {

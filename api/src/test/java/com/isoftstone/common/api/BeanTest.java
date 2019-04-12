@@ -1,11 +1,6 @@
 package com.isoftstone.common.api;
 
 
-import org.springframework.cglib.beans.BeanGenerator;
-import org.springframework.cglib.beans.BeanMap;
-
-import com.isoftstone.common.common.CommTreeDto;
-
 public class BeanTest {
 	public static void main(String[] args) {
 		/*CommTreeDto commTreeDto=new CommTreeDto();

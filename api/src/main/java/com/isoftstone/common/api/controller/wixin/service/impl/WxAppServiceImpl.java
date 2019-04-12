@@ -1,24 +1,5 @@
 package com.isoftstone.common.api.controller.wixin.service.impl;
 
-import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
-import org.common.constant.CommonConstants;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-
-import com.google.common.collect.Lists;
-import com.isoftstone.common.api.controller.wixin.bean.WxConfigBean;
-import com.isoftstone.common.api.controller.wixin.service.WxAppService;
-import com.isoftstone.common.api.service.cache.CacheService;
-import com.isoftstone.common.api.service.cache.LocalCacheFactory;
-import com.isoftstone.common.plugins.visua.hystrix.HystrixVisuaSqlExampleClient;
-import com.isoftstone.common.util.JsonService;
-
 import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.api.impl.WxMaServiceImpl;
 import cn.binarywang.wx.miniapp.bean.WxMaKefuMessage;
@@ -26,9 +7,26 @@ import cn.binarywang.wx.miniapp.bean.WxMaTemplateMessage;
 import cn.binarywang.wx.miniapp.config.WxMaInMemoryConfig;
 import cn.binarywang.wx.miniapp.message.WxMaMessageHandler;
 import cn.binarywang.wx.miniapp.message.WxMaMessageRouter;
+import com.google.common.collect.Lists;
+import com.isoftstone.common.api.controller.wixin.bean.WxConfigBean;
+import com.isoftstone.common.api.controller.wixin.service.WxAppService;
+import com.isoftstone.common.api.service.cache.CacheService;
+import com.isoftstone.common.api.service.cache.LocalCacheFactory;
+import com.isoftstone.common.plugins.visua.hystrix.HystrixVisuaSqlExampleClient;
+import com.isoftstone.common.util.JsonService;
 import me.chanjar.weixin.common.bean.result.WxMediaUploadResult;
 import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.mp.api.WxMpMessageRouter;
+import org.common.constant.CommonConstants;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 public class WxAppServiceImpl implements WxAppService {

@@ -1,14 +1,13 @@
 package com.isoftstone.common.api.controller.common;
 
-import java.io.IOException;
-
+import com.isoftstone.common.api.support.APIResult;
+import com.isoftstone.common.api.support.websocket.WebSocketServer;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.isoftstone.common.api.support.APIResult;
-import com.isoftstone.common.api.support.websocket.WebSocketServer;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/checkcenter")

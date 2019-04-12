@@ -1,22 +1,20 @@
 package com.isoftstone.common.api.support.interceptor;
 
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-import org.springframework.web.servlet.HandlerInterceptor;
-
-
 import com.isoftstone.common.api.service.cache.CacheService;
 import com.isoftstone.common.api.service.cache.LocalCacheFactory;
 import com.isoftstone.common.api.service.interceptor.PublicBusinessService;
 import com.isoftstone.common.api.support.APIResult;
 import com.isoftstone.common.common.sys.SysUserDto;
 import com.isoftstone.common.util.JsonService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.servlet.HandlerInterceptor;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Service
 public class UserInterceptor implements HandlerInterceptor{

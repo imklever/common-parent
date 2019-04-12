@@ -1,28 +1,18 @@
 package com.isoftstone.common.api.util;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Map;
+import com.thoughtworks.xstream.core.util.Base64Encoder;
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import org.apache.commons.io.FileUtils;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.io.FileUtils;
-
-import com.thoughtworks.xstream.core.util.Base64Encoder;
-
-import freemarker.template.Configuration;
-import freemarker.template.Template;
+import java.io.*;
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
 
 @SuppressWarnings("deprecation")
 public class WordUtils {

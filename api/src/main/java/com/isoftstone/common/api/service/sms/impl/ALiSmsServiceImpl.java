@@ -1,10 +1,5 @@
 package com.isoftstone.common.api.service.sms.impl;
 
-import java.util.UUID;
-
-import org.springframework.stereotype.Service;
-
-import com.alibaba.fastjson.JSONObject;
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsRequest;
@@ -16,6 +11,9 @@ import com.aliyuncs.profile.IClientProfile;
 import com.isoftstone.common.api.service.sms.ALiSmsService;
 import com.isoftstone.common.util.ErrorCode;
 import com.isoftstone.common.util.ServiceException;
+import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 @Service
 public class ALiSmsServiceImpl implements ALiSmsService {

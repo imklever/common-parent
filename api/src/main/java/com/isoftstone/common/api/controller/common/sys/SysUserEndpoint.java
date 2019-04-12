@@ -1,43 +1,10 @@
 package com.isoftstone.common.api.controller.common.sys;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.URL;
-import java.net.URLConnection;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.codec.digest.DigestUtils;
-import org.common.constant.ApiMapperUrlConstants;
-import org.common.constant.CommonConstants;
-import org.common.constant.ErrorCodeConstants;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-
 import com.alibaba.fastjson.JSONObject;
-import com.isoftstone.common.api.controller.common.CommEndpoint;
 import com.isoftstone.common.api.service.cache.CacheService;
 import com.isoftstone.common.api.service.cache.LocalCacheFactory;
 import com.isoftstone.common.api.support.APIResult;
 import com.isoftstone.common.api.support.BaseConfig;
-import com.isoftstone.common.api.util.Md5Utils;
 import com.isoftstone.common.api.util.RandomValidateCodeUtils;
 import com.isoftstone.common.common.sys.SysRoleDto;
 import com.isoftstone.common.common.sys.SysUserDto;
@@ -47,7 +14,28 @@ import com.isoftstone.common.plugins.visua.VisuaSqlExample;
 import com.isoftstone.common.plugins.visua.hystrix.HystrixVisuaSqlExampleClient;
 import com.isoftstone.common.util.CommUtil;
 import com.isoftstone.common.util.JsonService;
-import com.isoftstone.common.util.impl.JsonServiceFastJsonImpl;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.common.constant.ApiMapperUrlConstants;
+import org.common.constant.CommonConstants;
+import org.common.constant.ErrorCodeConstants;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.URL;
+import java.net.URLConnection;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 
 @RestController

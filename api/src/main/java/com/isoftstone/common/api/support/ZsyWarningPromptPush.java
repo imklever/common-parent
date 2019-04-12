@@ -1,21 +1,19 @@
 package com.isoftstone.common.api.support;
 
+import com.isoftstone.common.api.support.websocket.WebSocketServer;
+import com.isoftstone.common.plugins.visua.hystrix.HystrixVisuaSqlExampleClient;
+import com.isoftstone.common.util.JsonService;
+import org.common.constant.ErrorCodeConstants;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.common.constant.ErrorCodeConstants;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
-
-import com.isoftstone.common.api.support.websocket.WebSocketServer;
-import com.isoftstone.common.plugins.visua.hystrix.HystrixVisuaSqlExampleClient;
-import com.isoftstone.common.util.JsonService;
 
 @Component
 @Order(2)

@@ -1,22 +1,21 @@
 package com.isoftstone.common.api.util;
 
-import java.awt.Image;
+import org.bytedeco.javacv.FFmpegFrameGrabber;
+import org.bytedeco.javacv.Frame;
+import org.bytedeco.javacv.FrameGrabber.Exception;
+import org.bytedeco.javacv.Java2DFrameConverter;
+import org.common.constant.CommonConstants;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
-
-import javax.imageio.ImageIO;
-
-import org.bytedeco.javacv.FFmpegFrameGrabber;
-import org.bytedeco.javacv.Frame;
-import org.bytedeco.javacv.Java2DFrameConverter;
-import org.common.constant.CommonConstants;
-import org.bytedeco.javacv.FrameGrabber.Exception;
-import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 
 @Service

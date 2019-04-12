@@ -1,20 +1,17 @@
 package com.isoftstone.common.api.service.email.impl;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import com.isoftstone.common.api.service.email.EmailPushService;
+import com.isoftstone.common.plugins.visua.hystrix.HystrixVisuaSqlExampleClient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMessage.RecipientType;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.isoftstone.common.api.service.email.EmailPushService;
-import com.isoftstone.common.api.service.sms.impl.ALiSmsServiceImpl;
-import com.isoftstone.common.plugins.visua.hystrix.HystrixVisuaSqlExampleClient;
+import java.util.Date;
+import java.util.Properties;
 @Service
 public class EmailPushServiceImpl implements EmailPushService {
 	@Autowired

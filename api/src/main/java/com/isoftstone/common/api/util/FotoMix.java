@@ -1,13 +1,12 @@
 package com.isoftstone.common.api.util;
 
-import java.awt.Graphics;
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-
-import javax.imageio.ImageIO;
 
 
 /*import com.sun.image.codec.jpeg.JPEGCodec;

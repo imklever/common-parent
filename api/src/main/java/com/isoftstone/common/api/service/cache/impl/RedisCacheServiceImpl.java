@@ -1,19 +1,17 @@
 package com.isoftstone.common.api.service.cache.impl;
 
 
-import java.util.Date;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
-
+import com.isoftstone.common.api.service.cache.CacheService;
+import com.isoftstone.common.util.JsonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.isoftstone.common.api.service.cache.CacheService;
-import com.isoftstone.common.api.support.BaseConfig;
-import com.isoftstone.common.util.JsonService;
+import java.util.Date;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings("unchecked")
 @Service

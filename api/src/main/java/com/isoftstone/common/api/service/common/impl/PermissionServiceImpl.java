@@ -1,20 +1,5 @@
 package com.isoftstone.common.api.service.common.impl;
 
-import java.io.IOException;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-
-
-
-
 import com.isoftstone.common.api.service.cache.CacheService;
 import com.isoftstone.common.api.service.cache.LocalCacheFactory;
 import com.isoftstone.common.api.service.common.PermissionService;
@@ -22,6 +7,15 @@ import com.isoftstone.common.api.service.interceptor.PublicBusinessService;
 import com.isoftstone.common.api.support.APIResult;
 import com.isoftstone.common.common.sys.SysUserDto;
 import com.isoftstone.common.util.JsonService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.Set;
 
 @Service
 public class PermissionServiceImpl implements PermissionService{

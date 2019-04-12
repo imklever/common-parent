@@ -1,12 +1,11 @@
 package com.isoftstone.common.api.service.oss;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import com.isoftstone.common.api.service.oss.Impl.JDOssStorageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.isoftstone.common.api.service.oss.Impl.JDOssStorageServiceImpl;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class OssStorageFactory {

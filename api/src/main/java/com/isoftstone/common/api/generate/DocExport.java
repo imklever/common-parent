@@ -1,25 +1,16 @@
 package com.isoftstone.common.api.generate;
 
-import com.amazonaws.services.devicefarm.model.transform.OfferingJsonUnmarshaller;
-import com.isoftstone.common.plugins.visua.VisuaSqlExample;
-import com.isoftstone.common.plugins.visua.hystrix.HystrixVisuaSqlExampleClient;
-import com.isoftstone.common.util.JsonService;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sun.misc.BASE64Encoder;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Service
 public class DocExport {

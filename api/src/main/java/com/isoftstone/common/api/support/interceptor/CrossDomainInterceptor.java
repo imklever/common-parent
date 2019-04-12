@@ -1,14 +1,13 @@
 package com.isoftstone.common.api.support.interceptor;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.isoftstone.common.util.MyProps;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.isoftstone.common.util.MyProps;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 @Service
 public class CrossDomainInterceptor implements HandlerInterceptor {
 	  @Autowired

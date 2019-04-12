@@ -1,18 +1,15 @@
 package com.isoftstone.common.api.util;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
+import com.isoftstone.common.api.support.BaseConfig;
+
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletResponse;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-
-import javax.imageio.ImageIO;
-import javax.servlet.http.HttpServletResponse;
-
-import com.isoftstone.common.api.support.BaseConfig;
 
 public class RandomValidateCodeUtils {
 	// private String randString = "0123456789";//随机产生只有数字的字符串 private String

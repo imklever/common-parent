@@ -1,23 +1,14 @@
 package com.isoftstone.common.api.util;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.SequenceInputStream;
+import com.isoftstone.common.api.util.bean.FileSaveInfo;
+import com.isoftstone.common.api.util.bean.UploadInfo;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-
-import org.springframework.web.multipart.MultipartFile;
-
-import com.alibaba.fastjson.JSONObject;
-import com.isoftstone.common.api.util.bean.FileSaveInfo;
-import com.isoftstone.common.api.util.bean.UploadInfo;
 
 public class FileUtil {
 	private final static List<UploadInfo> uploadInfoList = new ArrayList<>();

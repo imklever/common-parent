@@ -1,11 +1,5 @@
 package com.isoftstone.common.api.service.common.impl;
 
-import java.util.Date;
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.isoftstone.common.api.domain.comon.HttpRequestMeta;
 import com.isoftstone.common.api.service.common.ExceptionLogService;
 import com.isoftstone.common.api.service.common.HttpLogService;
@@ -14,6 +8,11 @@ import com.isoftstone.common.common.SysHttpLogDto;
 import com.isoftstone.common.common.hystrix.HystrixSysHttpLogServiceClient;
 import com.isoftstone.common.util.IdService;
 import com.isoftstone.common.util.JsonService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 @Service
 public class HttpLogServiceImpl implements HttpLogService{

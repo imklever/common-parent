@@ -1,13 +1,12 @@
 package com.isoftstone.common.api.support.interceptor;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.isoftstone.common.api.service.common.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import com.isoftstone.common.api.service.common.PermissionService;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Service
 public class PermissionsInterceptor implements HandlerInterceptor{
