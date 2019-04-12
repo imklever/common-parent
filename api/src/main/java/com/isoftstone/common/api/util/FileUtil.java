@@ -4,7 +4,6 @@ import com.isoftstone.common.api.util.bean.FileSaveInfo;
 import com.isoftstone.common.api.util.bean.UploadInfo;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
