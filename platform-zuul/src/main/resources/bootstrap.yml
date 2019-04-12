@@ -1,0 +1,81 @@
+server:
+  port: 7099
+#  ssl:
+#    key-store: classpath:keystore.p12
+#    key-store-password: 123456
+#    keyStoreType: PKCS12
+
+spring:
+  application:
+    name: zuul
+  servlet:  #1.5版本  为 http ,2.0版本之后 为 servlet
+    multipart:
+      max-file-size: 2000MB
+      max-request-size: 2000MB
+      enabled: true
+      location: /tmp/zuulupfile
+  sleuth:
+    sampler:
+      percentage: 1
+
+ribbon:  
+  ReadTimeout: 100000
+  ConnectTimeout: 3000
+  
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+            defaultZone: http://localhost:8101/eureka/
+
+# Disable Hystrix timeout globally (for all services)
+#hystrix.command.default.execution.timeout.enabled: false
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+#hystrix.command.service-a.execution.timeout.enabled: false
+
+# Disable Hystrix timeout for a single service
+#hystrix.command.<serviceName>.execution.timeout.enabled: false
+
+# Increase the Hystrix timeout to 60s (globally)
+#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+
+# Increase the Hystrix timeout to 60s (per service)
+#hystrix.command.<serviceName>.execution.isolation.thread.timeoutInMilliseconds: 60000
+
+zuul:
+  sslHostnameValidationEnabled: false
+  host:
+    connect-timeout-millis: 3000
+    socket-timeout-millis: 100000
+  routes:
+    api-top:
+      path: /api-top/**
+      serviceId: api-service
+    comm-top:
+      path: /comm-top/**
+      serviceId: comm-api-service
+    zsy-api-top:
+      path: /zsy-top/**
+      serviceId: zsy-api-service
+    oil-api-top:
+      path: /oil-top/**
+      serviceId: oil-api-service
+    caict-api-top:
+      path: /caict-top/**
+      serviceId: caict-api-service
+    jd-api-top:
+      path: /jd-top/**
+      serviceId: jd-api-service
+    cykx-api-top:
+      path: /cykx-top/**
+      serviceId: cykx-api-service
+    h5-top:
+      path: /ioc/**
+      serviceId: h5
+
+endpoints:
+ shutdown:
+  enabled: true
