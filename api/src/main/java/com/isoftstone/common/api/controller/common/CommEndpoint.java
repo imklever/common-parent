@@ -32,9 +32,11 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.Map.Entry;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -442,7 +444,7 @@ public class CommEndpoint {
                 	long  fileSize = file.getSize()/1024;
                 	String targetFilePath = fileDirPath +separator +fileNamePrefix+"_"+fileName;
                 	File targetFile =new File(targetFilePath);
-                    InputStream in = file.getInputStream(); 
+                    InputStream in = file.getInputStream();
 	                out = new FileOutputStream(targetFile);	               
 	                byte buffer[] = new byte[1024]; 
 	                MessageDigest md = MessageDigest.getInstance("MD5");

@@ -4,6 +4,7 @@ import com.isoftstone.common.api.support.BaseConfig;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Date;
 import java.util.HashMap;

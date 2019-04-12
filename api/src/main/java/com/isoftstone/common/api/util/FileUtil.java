@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.io.*;
 
 public class FileUtil {
 	private final static List<UploadInfo> uploadInfoList = new ArrayList<>();

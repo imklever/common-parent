@@ -1,12 +1,12 @@
 package com.isoftstone.common.api.util;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-
 
 /*import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;*/
@@ -18,7 +18,7 @@ public class FotoMix {
 	        InputStream imagein2 = new FileInputStream("D://2.jpg");  
 	        BufferedImage image = ImageIO.read(imagein);  
 	        BufferedImage image2 = ImageIO.read(imagein2);  
-	        Graphics g = image.getGraphics();  
+	        Graphics g = image.getGraphics();
 	        /*drawImage方法参数说明
 	         * img - 要绘制的指定图像。如果 img 为 null，则此方法不执行任何动作。
 	         * x - x 坐标。
