@@ -1,0 +1,53 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: ranqi-api-service
+  server:
+    tomcat:
+      uri-encoding: UTF-8
+  http:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+      enabled: true
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+  jackson:
+    time-zone: GMT+8
+    
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+            defaultZone: http://localhost:8101/eureka/
+
+
+endpoints:
+  shutdown:
+    enabled: true
+
+logging:
+  level:
+    org:
+      springframework: INFO
+
+hystrix:
+   command:
+       default:
+           execution:
+              isolation:
+                 thread:
+                    timeoutInMilliseconds: 5000
+
+
+ioc:
+  local: true
+  upFilePath: E://upfile/

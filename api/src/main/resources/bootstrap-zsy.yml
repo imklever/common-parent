@@ -1,0 +1,92 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: zsy-api-service
+  server:
+    tomcat:
+      uri-encoding: UTF-8
+  servlet:  #1.5版本  为 http ,2.0版本之后 为 servlet
+    multipart:
+      max-file-size: 2000MB
+      max-request-size: 2000MB
+      location: /tmp/upfile2
+      enabled: true
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+  jackson:
+    time-zone: GMT+8
+  redis:
+      #数据库索引
+      database: 0
+      host: 114.116.1.247
+      port: 6379
+      password: 123456
+      jedis:
+        pool:
+          #最大连接数
+          max-active: 8
+          #最大阻塞等待时间(负数表示没限制)
+          max-wait: -1
+          #最大空闲
+          max-idle: 8
+          #最小空闲
+          min-idle: 0
+      #连接超时时间
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+            defaultZone: http://localhost:8101/eureka/
+
+ribbon:  
+  ReadTimeout: 100000
+  ConnectTimeout: 3000
+  
+endpoints:
+  shutdown:
+    enabled: true
+
+logging:
+  level:
+    org:
+      springframework: INFO
+
+hystrix:
+   command:
+       default:
+           execution:
+              isolation:
+                 thread:
+                    timeoutInMilliseconds: 5000
+
+
+ioc:
+  local: true
+  upFilePath: /tmp/upfile/
+  downFilePath: /tmp/upfile/
+  exportWordPath: /downloadpath/
+
+#设置超时时间  
+login:
+ expired-time: 480   #过期时间戳
+
+#缓存类型：Java内存 ： javaCache, redis缓存：redisCache.  默认采用java内存缓存，默认值：javaCache
+cache:
+  type: javaCache
+
+#上传Excel批量导入，一次导入多少条数据,默认为50条
+excelfile:
+  import-rows: 50
+  
+#业务系统使用
+sys:
+  app_user: jd
+  
